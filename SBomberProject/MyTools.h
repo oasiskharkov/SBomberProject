@@ -44,25 +44,27 @@ namespace MyTools {
    class ILogger
    {
    public:
+      virtual ~ILogger() = default;
       virtual void WriteToLog(const std::string& str) = 0;
       virtual void WriteToLog(const std::string& str, int n) = 0;
       virtual void WriteToLog(const std::string& str, double d) = 0;
+      virtual void OpenFile(const std::string& fileName) = 0;
    };
 
    class FileLoggerSingleton : public ILogger
    {
    public:
-      static FileLoggerSingleton& getInstance(const std::string& FN);
+      static FileLoggerSingleton& getInstance();
       ~FileLoggerSingleton();
 
       void WriteToLog(const std::string& str) override;
       void WriteToLog(const std::string& str, int n) override;
       void WriteToLog(const std::string& str, double d) override;
-      void WriteIndexToLog(int64_t index);
+      void OpenFile(const std::string& fileName) override;
    private:
       std::ofstream logOut;
    private:
-      FileLoggerSingleton(const std::string& FN);
+      FileLoggerSingleton() = default;
       FileLoggerSingleton(const FileLoggerSingleton&) = delete;
       FileLoggerSingleton& operator = (const FileLoggerSingleton&) = delete;
    };
@@ -75,13 +77,14 @@ namespace MyTools {
       void WriteToLog(const std::string& str) override;
       void WriteToLog(const std::string& str, int n) override;
       void WriteToLog(const std::string& str, double d) override;
+      void OpenFile(const std::string& fileName) override;
    private:
       LoggerSingleton(FileLoggerSingleton& logger);
       LoggerSingleton(const LoggerSingleton&) = delete;
       LoggerSingleton& operator = (const LoggerSingleton&) = delete;
    private:
       FileLoggerSingleton& logger;
-      static int64_t index;
+      int64_t index;
    };
 
    //=============================================================================================

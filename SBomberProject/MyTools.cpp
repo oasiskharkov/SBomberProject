@@ -73,19 +73,10 @@ namespace MyTools {
       return std::string(buf);
    }
 
-   FileLoggerSingleton& FileLoggerSingleton::getInstance(const std::string& FN)
+   FileLoggerSingleton& FileLoggerSingleton::getInstance()
    {
-      static FileLoggerSingleton instance(FN);
+      static FileLoggerSingleton instance;
       return instance;
-   }
-
-   FileLoggerSingleton::FileLoggerSingleton(const std::string& FN)
-   {
-      logOut.open(FN, std::ios_base::out);
-      if (!logOut.is_open())
-      {
-         throw std::ios_base::failure("Can't open file " + FN);
-      }
    }
 
    FileLoggerSingleton::~FileLoggerSingleton()
@@ -100,7 +91,11 @@ namespace MyTools {
    {
       if (logOut.is_open())
       {
-         logOut << GetCurDateTime() << " - " << str << std::endl;
+         size_t pos = str.find_first_of(' ');
+         std::string index = str.substr(0, pos + 1);
+         std::string data = str.substr(pos + 1, str.length() - pos - 1);
+
+         logOut << index << GetCurDateTime() << " - " << data << std::endl;
       }
    }
 
@@ -108,7 +103,11 @@ namespace MyTools {
    {
       if (logOut.is_open())
       {
-         logOut << GetCurDateTime() << " - " << str << n << std::endl;
+         size_t pos = str.find_first_of(' ');
+         std::string index = str.substr(0, pos + 1);
+         std::string data = str.substr(pos + 1, str.length() - pos - 1);
+
+         logOut << index << GetCurDateTime() << " - " << data << n << std::endl;
       }
    }
 
@@ -116,19 +115,22 @@ namespace MyTools {
    {
       if (logOut.is_open())
       {
-         logOut << GetCurDateTime() << " - " << str << d << std::endl;
+         size_t pos = str.find_first_of(' ');
+         std::string index = str.substr(0, pos + 1);
+         std::string data = str.substr(pos + 1, str.length() - pos - 1);
+
+         logOut << index << GetCurDateTime() << " - " << data << d << std::endl;
       }
    }
 
-   void FileLoggerSingleton::WriteIndexToLog(int64_t index)
+   void FileLoggerSingleton::OpenFile(const std::string& fileName)
    {
-      if (logOut.is_open())
+      logOut.open(fileName, std::ios_base::out);
+      if (!logOut.is_open())
       {
-         logOut << index << ". ";
+         throw std::ios_base::failure("Can't open file " + fileName);
       }
    }
-
-   int64_t LoggerSingleton::index = 1;
 
    LoggerSingleton& LoggerSingleton::getInstance(FileLoggerSingleton& logger)
    {
@@ -136,30 +138,34 @@ namespace MyTools {
       return instance;
    }
 
-   LoggerSingleton::LoggerSingleton(FileLoggerSingleton& logger) : logger{logger}
+   LoggerSingleton::LoggerSingleton(FileLoggerSingleton& logger) : 
+      logger{ logger }, 
+      index{ 1 }
    {
       
    }
 
    void LoggerSingleton::WriteToLog(const std::string& str)
    {
-      logger.WriteIndexToLog(index);
-      logger.WriteToLog(str);
+      logger.WriteToLog(std::to_string(index) + ". " + str);
       ++index;
    }
 
    void LoggerSingleton::WriteToLog(const std::string& str, int n)
    {
-      logger.WriteIndexToLog(index);
-      logger.WriteToLog(str, n);
+      logger.WriteToLog(std::to_string(index) + ". " + str, n);
       ++index;
    }
 
    void LoggerSingleton::WriteToLog(const std::string& str, double d)
    {
-      logger.WriteIndexToLog(index);
-      logger.WriteToLog(str, d);
+      logger.WriteToLog(std::to_string(index) + ". " + str, d);
       ++index;
+   }
+
+   void LoggerSingleton::OpenFile(const std::string& fileName)
+   {
+      logger.OpenFile(fileName);
    }
 
    //=============================================================================================

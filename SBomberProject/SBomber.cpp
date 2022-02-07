@@ -21,8 +21,9 @@ SBomber::SBomber() :
    bombsNumber{ 10 },
    fps{ 0 },
    score{ 0 },
-   logger{ LoggerSingleton::getInstance(FileLoggerSingleton::getInstance("log.txt")) }
+   logger{ LoggerSingleton::getInstance(FileLoggerSingleton::getInstance()) }
 {
+   logger.OpenFile("log.txt");
    logger.WriteToLog(string(__FUNCTION__) + " was invoked");
 
    Plane* p = new Plane;
