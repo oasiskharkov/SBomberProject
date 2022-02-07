@@ -1,124 +1,227 @@
-1. Mon Feb  7 12:18:41 2022 - SBomber::SBomber was invoked
-2. Mon Feb  7 12:18:41 2022 - SBomber::TimeStart was invoked
-3. Mon Feb  7 12:18:42 2022 - SBomber::DrawFrame was invoked
-4. Mon Feb  7 12:18:42 2022 - SBomber::MoveObjects was invoked
-5. Mon Feb  7 12:18:42 2022 - SBomber::CheckObjects was invoked
-6. Mon Feb  7 12:18:42 2022 - SBomber::TimeFinish deltaTime = 563
-7. Mon Feb  7 12:18:42 2022 - SBomber::TimeStart was invoked
-8. Mon Feb  7 12:18:42 2022 - SBomber::DrawFrame was invoked
-9. Mon Feb  7 12:18:42 2022 - SBomber::MoveObjects was invoked
-10. Mon Feb  7 12:18:42 2022 - SBomber::CheckObjects was invoked
-11. Mon Feb  7 12:18:42 2022 - SBomber::TimeFinish deltaTime = 547
-12. Mon Feb  7 12:18:42 2022 - SBomber::TimeStart was invoked
-13. Mon Feb  7 12:18:43 2022 - SBomber::DrawFrame was invoked
-14. Mon Feb  7 12:18:43 2022 - SBomber::MoveObjects was invoked
-15. Mon Feb  7 12:18:43 2022 - SBomber::CheckObjects was invoked
-16. Mon Feb  7 12:18:43 2022 - SBomber::TimeFinish deltaTime = 547
-17. Mon Feb  7 12:18:43 2022 - SBomber::TimeStart was invoked
-18. Mon Feb  7 12:18:43 2022 - SBomber::DrawFrame was invoked
-19. Mon Feb  7 12:18:43 2022 - SBomber::MoveObjects was invoked
-20. Mon Feb  7 12:18:43 2022 - SBomber::CheckObjects was invoked
-21. Mon Feb  7 12:18:43 2022 - SBomber::TimeFinish deltaTime = 547
-22. Mon Feb  7 12:18:43 2022 - SBomber::TimeStart was invoked
-23. Mon Feb  7 12:18:44 2022 - SBomber::DrawFrame was invoked
-24. Mon Feb  7 12:18:44 2022 - SBomber::MoveObjects was invoked
-25. Mon Feb  7 12:18:44 2022 - SBomber::CheckObjects was invoked
-26. Mon Feb  7 12:18:44 2022 - SBomber::TimeFinish deltaTime = 546
-27. Mon Feb  7 12:18:44 2022 - SBomber::TimeStart was invoked
-28. Mon Feb  7 12:18:44 2022 - SBomber::DrawFrame was invoked
-29. Mon Feb  7 12:18:44 2022 - SBomber::MoveObjects was invoked
-30. Mon Feb  7 12:18:44 2022 - SBomber::CheckObjects was invoked
-31. Mon Feb  7 12:18:44 2022 - SBomber::TimeFinish deltaTime = 547
-32. Mon Feb  7 12:18:44 2022 - SBomber::TimeStart was invoked
-33. Mon Feb  7 12:18:45 2022 - SBomber::DrawFrame was invoked
-34. Mon Feb  7 12:18:45 2022 - SBomber::MoveObjects was invoked
-35. Mon Feb  7 12:18:45 2022 - SBomber::CheckObjects was invoked
-36. Mon Feb  7 12:18:45 2022 - SBomber::TimeFinish deltaTime = 547
-37. Mon Feb  7 12:18:45 2022 - SBomber::TimeStart was invoked
-38. Mon Feb  7 12:18:45 2022 - SBomber::ProcessKBHit was invoked. key = 72
-39. Mon Feb  7 12:18:46 2022 - SBomber::DrawFrame was invoked
-40. Mon Feb  7 12:18:46 2022 - SBomber::MoveObjects was invoked
-41. Mon Feb  7 12:18:46 2022 - SBomber::CheckObjects was invoked
-42. Mon Feb  7 12:18:46 2022 - SBomber::TimeFinish deltaTime = 563
-43. Mon Feb  7 12:18:46 2022 - SBomber::TimeStart was invoked
-44. Mon Feb  7 12:18:46 2022 - SBomber::DrawFrame was invoked
-45. Mon Feb  7 12:18:46 2022 - SBomber::MoveObjects was invoked
-46. Mon Feb  7 12:18:46 2022 - SBomber::CheckObjects was invoked
-47. Mon Feb  7 12:18:46 2022 - SBomber::TimeFinish deltaTime = 562
-48. Mon Feb  7 12:18:46 2022 - SBomber::TimeStart was invoked
-49. Mon Feb  7 12:18:47 2022 - SBomber::DrawFrame was invoked
-50. Mon Feb  7 12:18:47 2022 - SBomber::MoveObjects was invoked
-51. Mon Feb  7 12:18:47 2022 - SBomber::CheckObjects was invoked
-52. Mon Feb  7 12:18:47 2022 - SBomber::TimeFinish deltaTime = 578
-53. Mon Feb  7 12:18:47 2022 - SBomber::TimeStart was invoked
-54. Mon Feb  7 12:18:47 2022 - SBomber::DrawFrame was invoked
-55. Mon Feb  7 12:18:47 2022 - SBomber::MoveObjects was invoked
-56. Mon Feb  7 12:18:47 2022 - SBomber::CheckObjects was invoked
-57. Mon Feb  7 12:18:47 2022 - SBomber::TimeFinish deltaTime = 547
-58. Mon Feb  7 12:18:47 2022 - SBomber::TimeStart was invoked
-59. Mon Feb  7 12:18:48 2022 - SBomber::DrawFrame was invoked
-60. Mon Feb  7 12:18:48 2022 - SBomber::MoveObjects was invoked
-61. Mon Feb  7 12:18:48 2022 - SBomber::CheckObjects was invoked
-62. Mon Feb  7 12:18:48 2022 - SBomber::TimeFinish deltaTime = 547
-63. Mon Feb  7 12:18:48 2022 - SBomber::TimeStart was invoked
-64. Mon Feb  7 12:18:48 2022 - SBomber::DrawFrame was invoked
-65. Mon Feb  7 12:18:48 2022 - SBomber::MoveObjects was invoked
-66. Mon Feb  7 12:18:48 2022 - SBomber::CheckObjects was invoked
-67. Mon Feb  7 12:18:48 2022 - SBomber::TimeFinish deltaTime = 578
-68. Mon Feb  7 12:18:48 2022 - SBomber::TimeStart was invoked
-69. Mon Feb  7 12:18:49 2022 - SBomber::DrawFrame was invoked
-70. Mon Feb  7 12:18:49 2022 - SBomber::MoveObjects was invoked
-71. Mon Feb  7 12:18:49 2022 - SBomber::CheckObjects was invoked
-72. Mon Feb  7 12:18:49 2022 - SBomber::TimeFinish deltaTime = 563
-73. Mon Feb  7 12:18:49 2022 - SBomber::TimeStart was invoked
-74. Mon Feb  7 12:18:49 2022 - SBomber::ProcessKBHit was invoked. key = 80
-75. Mon Feb  7 12:18:49 2022 - SBomber::DrawFrame was invoked
-76. Mon Feb  7 12:18:49 2022 - SBomber::MoveObjects was invoked
-77. Mon Feb  7 12:18:49 2022 - SBomber::CheckObjects was invoked
-78. Mon Feb  7 12:18:49 2022 - SBomber::TimeFinish deltaTime = 547
-79. Mon Feb  7 12:18:49 2022 - SBomber::TimeStart was invoked
-80. Mon Feb  7 12:18:50 2022 - SBomber::DrawFrame was invoked
-81. Mon Feb  7 12:18:50 2022 - SBomber::MoveObjects was invoked
-82. Mon Feb  7 12:18:50 2022 - SBomber::CheckObjects was invoked
-83. Mon Feb  7 12:18:50 2022 - SBomber::TimeFinish deltaTime = 562
-84. Mon Feb  7 12:18:50 2022 - SBomber::TimeStart was invoked
-85. Mon Feb  7 12:18:51 2022 - SBomber::DrawFrame was invoked
-86. Mon Feb  7 12:18:51 2022 - SBomber::MoveObjects was invoked
-87. Mon Feb  7 12:18:51 2022 - SBomber::CheckObjects was invoked
-88. Mon Feb  7 12:18:51 2022 - SBomber::TimeFinish deltaTime = 563
-89. Mon Feb  7 12:18:51 2022 - SBomber::TimeStart was invoked
-90. Mon Feb  7 12:18:51 2022 - SBomber::DrawFrame was invoked
-91. Mon Feb  7 12:18:51 2022 - SBomber::MoveObjects was invoked
-92. Mon Feb  7 12:18:51 2022 - SBomber::CheckObjects was invoked
-93. Mon Feb  7 12:18:51 2022 - SBomber::TimeFinish deltaTime = 531
-94. Mon Feb  7 12:18:51 2022 - SBomber::TimeStart was invoked
-95. Mon Feb  7 12:18:52 2022 - SBomber::DrawFrame was invoked
-96. Mon Feb  7 12:18:52 2022 - SBomber::MoveObjects was invoked
-97. Mon Feb  7 12:18:52 2022 - SBomber::CheckObjects was invoked
-98. Mon Feb  7 12:18:52 2022 - SBomber::TimeFinish deltaTime = 578
-99. Mon Feb  7 12:18:52 2022 - SBomber::TimeStart was invoked
-100. Mon Feb  7 12:18:52 2022 - SBomber::DrawFrame was invoked
-101. Mon Feb  7 12:18:52 2022 - SBomber::MoveObjects was invoked
-102. Mon Feb  7 12:18:52 2022 - SBomber::CheckObjects was invoked
-103. Mon Feb  7 12:18:52 2022 - SBomber::TimeFinish deltaTime = 578
-104. Mon Feb  7 12:18:52 2022 - SBomber::TimeStart was invoked
-105. Mon Feb  7 12:18:53 2022 - SBomber::DrawFrame was invoked
-106. Mon Feb  7 12:18:53 2022 - SBomber::MoveObjects was invoked
-107. Mon Feb  7 12:18:53 2022 - SBomber::CheckObjects was invoked
-108. Mon Feb  7 12:18:53 2022 - SBomber::TimeFinish deltaTime = 547
-109. Mon Feb  7 12:18:53 2022 - SBomber::TimeStart was invoked
-110. Mon Feb  7 12:18:53 2022 - SBomber::DrawFrame was invoked
-111. Mon Feb  7 12:18:53 2022 - SBomber::MoveObjects was invoked
-112. Mon Feb  7 12:18:53 2022 - SBomber::CheckObjects was invoked
-113. Mon Feb  7 12:18:53 2022 - SBomber::TimeFinish deltaTime = 578
-114. Mon Feb  7 12:18:53 2022 - SBomber::TimeStart was invoked
-115. Mon Feb  7 12:18:54 2022 - SBomber::DrawFrame was invoked
-116. Mon Feb  7 12:18:54 2022 - SBomber::MoveObjects was invoked
-117. Mon Feb  7 12:18:54 2022 - SBomber::CheckObjects was invoked
-118. Mon Feb  7 12:18:54 2022 - SBomber::TimeFinish deltaTime = 563
-119. Mon Feb  7 12:18:54 2022 - SBomber::TimeStart was invoked
-120. Mon Feb  7 12:18:54 2022 - SBomber::ProcessKBHit was invoked. key = 27
-121. Mon Feb  7 12:18:55 2022 - SBomber::DrawFrame was invoked
-122. Mon Feb  7 12:18:55 2022 - SBomber::MoveObjects was invoked
-123. Mon Feb  7 12:18:55 2022 - SBomber::CheckObjects was invoked
-124. Mon Feb  7 12:18:55 2022 - SBomber::TimeFinish deltaTime = 562
+1. Mon Feb  7 13:08:39 2022 - SBomber::SBomber was invoked
+2. Mon Feb  7 13:08:39 2022 - SBomber::TimeStart was invoked
+3. Mon Feb  7 13:08:40 2022 - SBomber::DrawFrame was invoked
+4. Mon Feb  7 13:08:40 2022 - SBomber::MoveObjects was invoked
+5. Mon Feb  7 13:08:40 2022 - SBomber::CheckObjects was invoked
+6. Mon Feb  7 13:08:40 2022 - SBomber::TimeFinish deltaTime = 578
+7. Mon Feb  7 13:08:40 2022 - SBomber::TimeStart was invoked
+8. Mon Feb  7 13:08:40 2022 - SBomber::DrawFrame was invoked
+9. Mon Feb  7 13:08:40 2022 - SBomber::MoveObjects was invoked
+10. Mon Feb  7 13:08:40 2022 - SBomber::CheckObjects was invoked
+11. Mon Feb  7 13:08:40 2022 - SBomber::TimeFinish deltaTime = 547
+12. Mon Feb  7 13:08:40 2022 - SBomber::TimeStart was invoked
+13. Mon Feb  7 13:08:41 2022 - SBomber::DrawFrame was invoked
+14. Mon Feb  7 13:08:41 2022 - SBomber::MoveObjects was invoked
+15. Mon Feb  7 13:08:41 2022 - SBomber::CheckObjects was invoked
+16. Mon Feb  7 13:08:41 2022 - SBomber::TimeFinish deltaTime = 578
+17. Mon Feb  7 13:08:41 2022 - SBomber::TimeStart was invoked
+18. Mon Feb  7 13:08:41 2022 - SBomber::DrawFrame was invoked
+19. Mon Feb  7 13:08:41 2022 - SBomber::MoveObjects was invoked
+20. Mon Feb  7 13:08:41 2022 - SBomber::CheckObjects was invoked
+21. Mon Feb  7 13:08:41 2022 - SBomber::TimeFinish deltaTime = 547
+22. Mon Feb  7 13:08:41 2022 - SBomber::TimeStart was invoked
+23. Mon Feb  7 13:08:42 2022 - SBomber::DrawFrame was invoked
+24. Mon Feb  7 13:08:42 2022 - SBomber::MoveObjects was invoked
+25. Mon Feb  7 13:08:42 2022 - SBomber::CheckObjects was invoked
+26. Mon Feb  7 13:08:42 2022 - SBomber::TimeFinish deltaTime = 563
+27. Mon Feb  7 13:08:42 2022 - SBomber::TimeStart was invoked
+28. Mon Feb  7 13:08:43 2022 - SBomber::DrawFrame was invoked
+29. Mon Feb  7 13:08:43 2022 - SBomber::MoveObjects was invoked
+30. Mon Feb  7 13:08:43 2022 - SBomber::CheckObjects was invoked
+31. Mon Feb  7 13:08:43 2022 - SBomber::TimeFinish deltaTime = 546
+32. Mon Feb  7 13:08:43 2022 - SBomber::TimeStart was invoked
+33. Mon Feb  7 13:08:43 2022 - SBomber::ProcessKBHit was invoked. key = 80
+34. Mon Feb  7 13:08:43 2022 - SBomber::DrawFrame was invoked
+35. Mon Feb  7 13:08:43 2022 - SBomber::MoveObjects was invoked
+36. Mon Feb  7 13:08:43 2022 - SBomber::CheckObjects was invoked
+37. Mon Feb  7 13:08:43 2022 - SBomber::TimeFinish deltaTime = 563
+38. Mon Feb  7 13:08:43 2022 - SBomber::TimeStart was invoked
+39. Mon Feb  7 13:08:44 2022 - SBomber::DrawFrame was invoked
+40. Mon Feb  7 13:08:44 2022 - SBomber::MoveObjects was invoked
+41. Mon Feb  7 13:08:44 2022 - SBomber::CheckObjects was invoked
+42. Mon Feb  7 13:08:44 2022 - SBomber::TimeFinish deltaTime = 562
+43. Mon Feb  7 13:08:44 2022 - SBomber::TimeStart was invoked
+44. Mon Feb  7 13:08:44 2022 - SBomber::DrawFrame was invoked
+45. Mon Feb  7 13:08:44 2022 - SBomber::MoveObjects was invoked
+46. Mon Feb  7 13:08:44 2022 - SBomber::CheckObjects was invoked
+47. Mon Feb  7 13:08:44 2022 - SBomber::TimeFinish deltaTime = 547
+48. Mon Feb  7 13:08:44 2022 - SBomber::TimeStart was invoked
+49. Mon Feb  7 13:08:45 2022 - SBomber::DrawFrame was invoked
+50. Mon Feb  7 13:08:45 2022 - SBomber::MoveObjects was invoked
+51. Mon Feb  7 13:08:45 2022 - SBomber::CheckObjects was invoked
+52. Mon Feb  7 13:08:45 2022 - SBomber::TimeFinish deltaTime = 563
+53. Mon Feb  7 13:08:45 2022 - SBomber::TimeStart was invoked
+54. Mon Feb  7 13:08:45 2022 - SBomber::DrawFrame was invoked
+55. Mon Feb  7 13:08:45 2022 - SBomber::MoveObjects was invoked
+56. Mon Feb  7 13:08:45 2022 - SBomber::CheckObjects was invoked
+57. Mon Feb  7 13:08:45 2022 - SBomber::TimeFinish deltaTime = 562
+58. Mon Feb  7 13:08:45 2022 - SBomber::TimeStart was invoked
+59. Mon Feb  7 13:08:46 2022 - SBomber::DrawFrame was invoked
+60. Mon Feb  7 13:08:46 2022 - SBomber::MoveObjects was invoked
+61. Mon Feb  7 13:08:46 2022 - SBomber::CheckObjects was invoked
+62. Mon Feb  7 13:08:46 2022 - SBomber::TimeFinish deltaTime = 563
+63. Mon Feb  7 13:08:46 2022 - SBomber::TimeStart was invoked
+64. Mon Feb  7 13:08:46 2022 - SBomber::ProcessKBHit was invoked. key = 72
+65. Mon Feb  7 13:08:46 2022 - SBomber::DrawFrame was invoked
+66. Mon Feb  7 13:08:46 2022 - SBomber::MoveObjects was invoked
+67. Mon Feb  7 13:08:46 2022 - SBomber::CheckObjects was invoked
+68. Mon Feb  7 13:08:46 2022 - SBomber::TimeFinish deltaTime = 547
+69. Mon Feb  7 13:08:46 2022 - SBomber::TimeStart was invoked
+70. Mon Feb  7 13:08:47 2022 - SBomber::DrawFrame was invoked
+71. Mon Feb  7 13:08:47 2022 - SBomber::MoveObjects was invoked
+72. Mon Feb  7 13:08:47 2022 - SBomber::CheckObjects was invoked
+73. Mon Feb  7 13:08:47 2022 - SBomber::TimeFinish deltaTime = 562
+74. Mon Feb  7 13:08:47 2022 - SBomber::TimeStart was invoked
+75. Mon Feb  7 13:08:48 2022 - SBomber::DrawFrame was invoked
+76. Mon Feb  7 13:08:48 2022 - SBomber::MoveObjects was invoked
+77. Mon Feb  7 13:08:48 2022 - SBomber::CheckObjects was invoked
+78. Mon Feb  7 13:08:48 2022 - SBomber::TimeFinish deltaTime = 547
+79. Mon Feb  7 13:08:48 2022 - SBomber::TimeStart was invoked
+80. Mon Feb  7 13:08:48 2022 - SBomber::DrawFrame was invoked
+81. Mon Feb  7 13:08:48 2022 - SBomber::MoveObjects was invoked
+82. Mon Feb  7 13:08:48 2022 - SBomber::CheckObjects was invoked
+83. Mon Feb  7 13:08:48 2022 - SBomber::TimeFinish deltaTime = 563
+84. Mon Feb  7 13:08:48 2022 - SBomber::TimeStart was invoked
+85. Mon Feb  7 13:08:49 2022 - SBomber::DrawFrame was invoked
+86. Mon Feb  7 13:08:49 2022 - SBomber::MoveObjects was invoked
+87. Mon Feb  7 13:08:49 2022 - SBomber::CheckObjects was invoked
+88. Mon Feb  7 13:08:49 2022 - SBomber::TimeFinish deltaTime = 562
+89. Mon Feb  7 13:08:49 2022 - SBomber::TimeStart was invoked
+90. Mon Feb  7 13:08:49 2022 - SBomber::DrawFrame was invoked
+91. Mon Feb  7 13:08:49 2022 - SBomber::MoveObjects was invoked
+92. Mon Feb  7 13:08:49 2022 - SBomber::CheckObjects was invoked
+93. Mon Feb  7 13:08:49 2022 - SBomber::TimeFinish deltaTime = 547
+94. Mon Feb  7 13:08:49 2022 - SBomber::TimeStart was invoked
+95. Mon Feb  7 13:08:50 2022 - SBomber::DrawFrame was invoked
+96. Mon Feb  7 13:08:50 2022 - SBomber::MoveObjects was invoked
+97. Mon Feb  7 13:08:50 2022 - SBomber::CheckObjects was invoked
+98. Mon Feb  7 13:08:50 2022 - SBomber::TimeFinish deltaTime = 562
+99. Mon Feb  7 13:08:50 2022 - SBomber::TimeStart was invoked
+100. Mon Feb  7 13:08:50 2022 - SBomber::DrawFrame was invoked
+101. Mon Feb  7 13:08:50 2022 - SBomber::MoveObjects was invoked
+102. Mon Feb  7 13:08:50 2022 - SBomber::CheckObjects was invoked
+103. Mon Feb  7 13:08:50 2022 - SBomber::TimeFinish deltaTime = 547
+104. Mon Feb  7 13:08:50 2022 - SBomber::TimeStart was invoked
+105. Mon Feb  7 13:08:51 2022 - SBomber::DrawFrame was invoked
+106. Mon Feb  7 13:08:51 2022 - SBomber::MoveObjects was invoked
+107. Mon Feb  7 13:08:51 2022 - SBomber::CheckObjects was invoked
+108. Mon Feb  7 13:08:51 2022 - SBomber::TimeFinish deltaTime = 563
+109. Mon Feb  7 13:08:51 2022 - SBomber::TimeStart was invoked
+110. Mon Feb  7 13:08:51 2022 - SBomber::ProcessKBHit was invoked. key = 72
+111. Mon Feb  7 13:08:51 2022 - SBomber::DrawFrame was invoked
+112. Mon Feb  7 13:08:51 2022 - SBomber::MoveObjects was invoked
+113. Mon Feb  7 13:08:51 2022 - SBomber::CheckObjects was invoked
+114. Mon Feb  7 13:08:51 2022 - SBomber::TimeFinish deltaTime = 562
+115. Mon Feb  7 13:08:51 2022 - SBomber::TimeStart was invoked
+116. Mon Feb  7 13:08:52 2022 - SBomber::DrawFrame was invoked
+117. Mon Feb  7 13:08:52 2022 - SBomber::MoveObjects was invoked
+118. Mon Feb  7 13:08:52 2022 - SBomber::CheckObjects was invoked
+119. Mon Feb  7 13:08:52 2022 - SBomber::TimeFinish deltaTime = 563
+120. Mon Feb  7 13:08:52 2022 - SBomber::TimeStart was invoked
+121. Mon Feb  7 13:08:53 2022 - SBomber::DrawFrame was invoked
+122. Mon Feb  7 13:08:53 2022 - SBomber::MoveObjects was invoked
+123. Mon Feb  7 13:08:53 2022 - SBomber::CheckObjects was invoked
+124. Mon Feb  7 13:08:53 2022 - SBomber::TimeFinish deltaTime = 547
+125. Mon Feb  7 13:08:53 2022 - SBomber::TimeStart was invoked
+126. Mon Feb  7 13:08:53 2022 - SBomber::DrawFrame was invoked
+127. Mon Feb  7 13:08:53 2022 - SBomber::MoveObjects was invoked
+128. Mon Feb  7 13:08:53 2022 - SBomber::CheckObjects was invoked
+129. Mon Feb  7 13:08:53 2022 - SBomber::TimeFinish deltaTime = 578
+130. Mon Feb  7 13:08:53 2022 - SBomber::TimeStart was invoked
+131. Mon Feb  7 13:08:54 2022 - SBomber::DrawFrame was invoked
+132. Mon Feb  7 13:08:54 2022 - SBomber::MoveObjects was invoked
+133. Mon Feb  7 13:08:54 2022 - SBomber::CheckObjects was invoked
+134. Mon Feb  7 13:08:54 2022 - SBomber::TimeFinish deltaTime = 578
+135. Mon Feb  7 13:08:54 2022 - SBomber::TimeStart was invoked
+136. Mon Feb  7 13:08:54 2022 - SBomber::DrawFrame was invoked
+137. Mon Feb  7 13:08:54 2022 - SBomber::MoveObjects was invoked
+138. Mon Feb  7 13:08:54 2022 - SBomber::CheckObjects was invoked
+139. Mon Feb  7 13:08:54 2022 - SBomber::TimeFinish deltaTime = 562
+140. Mon Feb  7 13:08:54 2022 - SBomber::TimeStart was invoked
+141. Mon Feb  7 13:08:55 2022 - SBomber::DrawFrame was invoked
+142. Mon Feb  7 13:08:55 2022 - SBomber::MoveObjects was invoked
+143. Mon Feb  7 13:08:55 2022 - SBomber::CheckObjects was invoked
+144. Mon Feb  7 13:08:55 2022 - SBomber::TimeFinish deltaTime = 563
+145. Mon Feb  7 13:08:55 2022 - SBomber::TimeStart was invoked
+146. Mon Feb  7 13:08:55 2022 - SBomber::DrawFrame was invoked
+147. Mon Feb  7 13:08:55 2022 - SBomber::MoveObjects was invoked
+148. Mon Feb  7 13:08:55 2022 - SBomber::CheckObjects was invoked
+149. Mon Feb  7 13:08:55 2022 - SBomber::TimeFinish deltaTime = 562
+150. Mon Feb  7 13:08:55 2022 - SBomber::TimeStart was invoked
+151. Mon Feb  7 13:08:56 2022 - SBomber::DrawFrame was invoked
+152. Mon Feb  7 13:08:56 2022 - SBomber::MoveObjects was invoked
+153. Mon Feb  7 13:08:56 2022 - SBomber::CheckObjects was invoked
+154. Mon Feb  7 13:08:56 2022 - SBomber::TimeFinish deltaTime = 547
+155. Mon Feb  7 13:08:56 2022 - SBomber::TimeStart was invoked
+156. Mon Feb  7 13:08:57 2022 - SBomber::DrawFrame was invoked
+157. Mon Feb  7 13:08:57 2022 - SBomber::MoveObjects was invoked
+158. Mon Feb  7 13:08:57 2022 - SBomber::CheckObjects was invoked
+159. Mon Feb  7 13:08:57 2022 - SBomber::TimeFinish deltaTime = 563
+160. Mon Feb  7 13:08:57 2022 - SBomber::TimeStart was invoked
+161. Mon Feb  7 13:08:57 2022 - SBomber::DrawFrame was invoked
+162. Mon Feb  7 13:08:57 2022 - SBomber::MoveObjects was invoked
+163. Mon Feb  7 13:08:57 2022 - SBomber::CheckObjects was invoked
+164. Mon Feb  7 13:08:57 2022 - SBomber::TimeFinish deltaTime = 562
+165. Mon Feb  7 13:08:57 2022 - SBomber::TimeStart was invoked
+166. Mon Feb  7 13:08:57 2022 - SBomber::ProcessKBHit was invoked. key = 98
+167. Mon Feb  7 13:08:57 2022 - SBomber::DropBomb was invoked
+168. Mon Feb  7 13:08:58 2022 - SBomber::DrawFrame was invoked
+169. Mon Feb  7 13:08:58 2022 - SBomber::MoveObjects was invoked
+170. Mon Feb  7 13:08:58 2022 - SBomber::CheckObjects was invoked
+171. Mon Feb  7 13:08:58 2022 - SBomber::TimeFinish deltaTime = 563
+172. Mon Feb  7 13:08:58 2022 - SBomber::TimeStart was invoked
+173. Mon Feb  7 13:08:58 2022 - SBomber::DrawFrame was invoked
+174. Mon Feb  7 13:08:58 2022 - SBomber::MoveObjects was invoked
+175. Mon Feb  7 13:08:58 2022 - SBomber::CheckObjects was invoked
+176. Mon Feb  7 13:08:58 2022 - SBomber::TimeFinish deltaTime = 562
+177. Mon Feb  7 13:08:58 2022 - SBomber::TimeStart was invoked
+178. Mon Feb  7 13:08:59 2022 - SBomber::DrawFrame was invoked
+179. Mon Feb  7 13:08:59 2022 - SBomber::MoveObjects was invoked
+180. Mon Feb  7 13:08:59 2022 - SBomber::CheckObjects was invoked
+181. Mon Feb  7 13:08:59 2022 - SBomber::TimeFinish deltaTime = 578
+182. Mon Feb  7 13:08:59 2022 - SBomber::TimeStart was invoked
+183. Mon Feb  7 13:08:59 2022 - SBomber::DrawFrame was invoked
+184. Mon Feb  7 13:08:59 2022 - SBomber::MoveObjects was invoked
+185. Mon Feb  7 13:08:59 2022 - SBomber::CheckObjects was invoked
+186. Mon Feb  7 13:08:59 2022 - SBomber::TimeFinish deltaTime = 563
+187. Mon Feb  7 13:08:59 2022 - SBomber::TimeStart was invoked
+188. Mon Feb  7 13:09:00 2022 - SBomber::DrawFrame was invoked
+189. Mon Feb  7 13:09:00 2022 - SBomber::MoveObjects was invoked
+190. Mon Feb  7 13:09:00 2022 - SBomber::CheckObjects was invoked
+191. Mon Feb  7 13:09:00 2022 - SBomber::TimeFinish deltaTime = 562
+192. Mon Feb  7 13:09:00 2022 - SBomber::TimeStart was invoked
+193. Mon Feb  7 13:09:00 2022 - SBomber::DrawFrame was invoked
+194. Mon Feb  7 13:09:00 2022 - SBomber::MoveObjects was invoked
+195. Mon Feb  7 13:09:00 2022 - SBomber::CheckObjects was invoked
+196. Mon Feb  7 13:09:00 2022 - SBomber::TimeFinish deltaTime = 563
+197. Mon Feb  7 13:09:00 2022 - SBomber::TimeStart was invoked
+198. Mon Feb  7 13:09:01 2022 - SBomber::DrawFrame was invoked
+199. Mon Feb  7 13:09:01 2022 - SBomber::MoveObjects was invoked
+200. Mon Feb  7 13:09:01 2022 - SBomber::CheckObjects was invoked
+201. Mon Feb  7 13:09:01 2022 - SBomber::TimeFinish deltaTime = 578
+202. Mon Feb  7 13:09:01 2022 - SBomber::TimeStart was invoked
+203. Mon Feb  7 13:09:02 2022 - SBomber::DrawFrame was invoked
+204. Mon Feb  7 13:09:02 2022 - SBomber::MoveObjects was invoked
+205. Mon Feb  7 13:09:02 2022 - SBomber::CheckObjects was invoked
+206. Mon Feb  7 13:09:02 2022 - SBomber::TimeFinish deltaTime = 563
+207. Mon Feb  7 13:09:02 2022 - SBomber::TimeStart was invoked
+208. Mon Feb  7 13:09:02 2022 - SBomber::DrawFrame was invoked
+209. Mon Feb  7 13:09:02 2022 - SBomber::MoveObjects was invoked
+210. Mon Feb  7 13:09:02 2022 - SBomber::CheckObjects was invoked
+211. Mon Feb  7 13:09:02 2022 - SBomber::TimeFinish deltaTime = 593
+212. Mon Feb  7 13:09:02 2022 - SBomber::TimeStart was invoked
+213. Mon Feb  7 13:09:03 2022 - SBomber::DrawFrame was invoked
+214. Mon Feb  7 13:09:03 2022 - SBomber::MoveObjects was invoked
+215. Mon Feb  7 13:09:03 2022 - SBomber::CheckObjects was invoked
+216. Mon Feb  7 13:09:03 2022 - SBomber::TimeFinish deltaTime = 547
+217. Mon Feb  7 13:09:03 2022 - SBomber::TimeStart was invoked
+218. Mon Feb  7 13:09:03 2022 - SBomber::DrawFrame was invoked
+219. Mon Feb  7 13:09:03 2022 - SBomber::MoveObjects was invoked
+220. Mon Feb  7 13:09:03 2022 - SBomber::CheckObjects was invoked
+221. Mon Feb  7 13:09:03 2022 - SBomber::TimeFinish deltaTime = 563
+222. Mon Feb  7 13:09:03 2022 - SBomber::TimeStart was invoked
+223. Mon Feb  7 13:09:03 2022 - SBomber::ProcessKBHit was invoked. key = 27
+224. Mon Feb  7 13:09:04 2022 - SBomber::DrawFrame was invoked
+225. Mon Feb  7 13:09:04 2022 - SBomber::MoveObjects was invoked
+226. Mon Feb  7 13:09:04 2022 - SBomber::CheckObjects was invoked
+227. Mon Feb  7 13:09:04 2022 - SBomber::TimeFinish deltaTime = 562

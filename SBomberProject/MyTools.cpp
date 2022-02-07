@@ -87,7 +87,7 @@ namespace MyTools {
       }
    }
 
-   void __fastcall FileLoggerSingleton::WriteToLog(const std::string& str)
+   void FileLoggerSingleton::WriteToLog(const std::string& str)
    {
       if (logOut.is_open())
       {
@@ -99,7 +99,7 @@ namespace MyTools {
       }
    }
 
-   void __fastcall FileLoggerSingleton::WriteToLog(const std::string& str, int n)
+   void FileLoggerSingleton::WriteToLog(const std::string& str, int n)
    {
       if (logOut.is_open())
       {
@@ -111,7 +111,7 @@ namespace MyTools {
       }
    }
 
-   void __fastcall FileLoggerSingleton::WriteToLog(const std::string& str, double d)
+   void FileLoggerSingleton::WriteToLog(const std::string& str, double d)
    {
       if (logOut.is_open())
       {
