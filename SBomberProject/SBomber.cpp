@@ -1,6 +1,7 @@
 
 #include <conio.h>
 #include <windows.h>
+#include <memory>
 
 #include "MyTools.h"
 #include "SBomber.h"
@@ -8,6 +9,7 @@
 #include "Ground.h"
 #include "Tank.h"
 #include "House.h"
+#include "Command.h"
 
 using namespace std;
 using namespace MyTools;
@@ -133,16 +135,16 @@ void SBomber::CheckBombsAndGround()
       if (vecBombs[i]->GetY() >= y) // Пересечение бомбы с землей
       {
          pGround->AddCrater(vecBombs[i]->GetX());
-         CheckDestoyableObjects(vecBombs[i]);
+         CheckDestroyableObjects(vecBombs[i]);
          DeleteDynamicObj(vecBombs[i]);
       }
    }
 
 }
 
-void SBomber::CheckDestoyableObjects(Bomb* pBomb)
+void SBomber::CheckDestroyableObjects(Bomb* pBomb)
 {
-   vector<DestroyableGroundObject*> vecDestoyableObjects = FindDestoyableGroundObjects();
+   vector<DestroyableGroundObject*> vecDestoyableObjects = FindDestroyableGroundObjects();
    const double size = pBomb->GetWidth();
    const double size_2 = size / 2;
    for (size_t i = 0; i < vecDestoyableObjects.size(); i++)
@@ -159,31 +161,17 @@ void SBomber::CheckDestoyableObjects(Bomb* pBomb)
 
 void SBomber::DeleteDynamicObj(DynamicObject* pObj)
 {
-   auto it = vecDynamicObj.begin();
-   for (; it != vecDynamicObj.end(); it++)
-   {
-      if (*it == pObj)
-      {
-         vecDynamicObj.erase(it);
-         break;
-      }
-   }
+   std::unique_ptr<Command> command = std::make_unique<DeleteDynamicObjectCommand>(vecDynamicObj, pObj);
+   command->Execute();
 }
 
 void SBomber::DeleteStaticObj(GameObject* pObj)
 {
-   auto it = vecStaticObj.begin();
-   for (; it != vecStaticObj.end(); it++)
-   {
-      if (*it == pObj)
-      {
-         vecStaticObj.erase(it);
-         break;
-      }
-   }
+   std::unique_ptr<Command> command = std::make_unique<DeleteStaticObjectCommand>(vecStaticObj, pObj);
+   command->Execute();
 }
 
-vector<DestroyableGroundObject*> SBomber::FindDestoyableGroundObjects() const
+vector<DestroyableGroundObject*> SBomber::FindDestroyableGroundObjects() const
 {
    vector<DestroyableGroundObject*> vec;
    Tank* pTank;
@@ -353,18 +341,6 @@ void SBomber::DropBomb()
    {
       logger.WriteToLog(string(__FUNCTION__) + " was invoked");
 
-      Plane* pPlane = FindPlane();
-      double x = pPlane->GetX() + 4;
-      double y = pPlane->GetY() + 2;
-
-      Bomb* pBomb = new Bomb;
-      pBomb->SetDirection(0.3, 1);
-      pBomb->SetSpeed(2);
-      pBomb->SetPos(x, y);
-      pBomb->SetWidth(SMALL_CRATER_SIZE);
-
-      vecDynamicObj.push_back(pBomb);
-      bombsNumber--;
-      score -= Bomb::BombCost;
+      std::unique_ptr<Command> command = std::make_unique<DropBombCommand>(vecDynamicObj, FindPlane(), bombsNumber, score);
    }
 }
