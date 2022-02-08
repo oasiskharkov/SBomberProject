@@ -6,9 +6,9 @@
 
 //=============================================================================================================
 
-enum CraterSize 
-{ 
-	SMALL_CRATER_SIZE = 9 
+enum CraterSize
+{
+   SMALL_CRATER_SIZE = 9
 };
 
 //=============================================================================================================
@@ -16,13 +16,9 @@ enum CraterSize
 class Crater : public GameObject
 {
 public:
-
-	bool __fastcall isInside(double xn) const;
-	
-	void Draw() const override;
-
+   bool __fastcall isInside(double xn) const;
+   void Draw() const override;
 private:
-
 };
 
 //=============================================================================================================
@@ -30,17 +26,12 @@ private:
 class Ground : public GameObject
 {
 public:
-
-	Ground() { }
-
-	void Draw() const override;
-
-	void __fastcall AddCrater(double xn);
-
+   Ground() = default;
+   void Draw() const override;
+   void __fastcall AddCrater(double xn);
 private:
-
-	bool __fastcall isInsideAnyCrater(double x) const;
-
-	std::vector<Crater> vecCrates;
+   std::vector<Crater> vecCrates;
+private:
+   bool __fastcall isInsideAnyCrater(double x) const;
 };
 

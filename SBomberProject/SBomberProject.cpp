@@ -5,6 +5,7 @@
 
 #include "SBomber.h"
 #include "MyTools.h"
+#include <crtdbg.h>
 
 using namespace std;
 
@@ -12,7 +13,10 @@ using namespace std;
 
 int main(void)
 {
-    MyTools::OpenLogFile("log.txt");
+   // Check for memory leak if debug build
+#if defined( DEBUG ) | defined( _DEBUG )
+   _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+#endif
 
     SBomber game;
 
@@ -33,8 +37,6 @@ int main(void)
         game.TimeFinish();
 
     } while (!game.GetExitFlag());
-
-    MyTools::CloseLogFile();
 
     return 0;
 }
