@@ -4,8 +4,8 @@
 #include <string>
 #include <fstream>
 
-namespace MyTools {
-
+namespace MyTools 
+{
    // Палитра цветов от 0 до 15
    enum ConsoleColor
    {
@@ -27,19 +27,12 @@ namespace MyTools {
       CC_White
    };
 
-   //=============================================================================================
 
    void ClrScr();
-
-   void __fastcall GotoXY(double x, double y);
-
+   void  GotoXY(double x, double y);
    uint16_t GetMaxX();
-
    uint16_t GetMaxY();
-
    void SetColor(ConsoleColor color);
-
-   //=============================================================================================
 
    class ILogger
    {
@@ -86,7 +79,4 @@ namespace MyTools {
       FileLoggerSingleton& logger;
       int64_t index;
    };
-
-   //=============================================================================================
-
 };

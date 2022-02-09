@@ -1,6 +1,6 @@
 #include "Command.h"
 #include "Plane.h"
-#include "Bomb.h"
+#include "BombDecorator.h"
 #include "Ground.h"
 
 DeleteDynamicObjectCommand::DeleteDynamicObjectCommand(std::vector<DynamicObject*>& dObjects, DynamicObject* dObject) :
@@ -68,7 +68,7 @@ void DropBombCommand::Execute()
    double x = plane->GetX() + 4;
    double y = plane->GetY() + 2;
 
-   Bomb* bomb = new Bomb;
+   DynamicObject* bomb = new BombDecorator;
    if (!bomb)
    {
       return;

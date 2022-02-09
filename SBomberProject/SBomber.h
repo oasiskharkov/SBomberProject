@@ -4,7 +4,7 @@
 
 #include "LevelGUI.h"
 #include "Plane.h"
-#include "Bomb.h"
+#include "BombDecorator.h"
 #include "Ground.h"
 #include "Tank.h"
 #include "MyTools.h"
@@ -28,17 +28,17 @@ public:
 private:
    void CheckPlaneAndLevelGUI();
    void CheckBombsAndGround();
-   void __fastcall CheckDestroyableObjects(Bomb* pBomb);
+   void  CheckDestroyableObjects(BombDecorator* pBomb);
 
-   void __fastcall DeleteDynamicObj(DynamicObject* pBomb);
-   void __fastcall DeleteStaticObj(GameObject* pObj);
+   void  DeleteDynamicObj(DynamicObject* pBomb);
+   void  DeleteStaticObj(GameObject* pObj);
 
    Ground* FindGround() const;
    Plane* FindPlane() const;
    LevelGUI* FindLevelGUI() const;
 
    std::vector<DestroyableGroundObject*> FindDestroyableGroundObjects() const;
-   std::vector<Bomb*> FindAllBombs() const;
+   std::vector<BombDecorator*> FindAllBombs() const;
 
    void DropBomb();
 
