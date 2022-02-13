@@ -1,21 +1,23 @@
 #pragma once
 
-class GameObject {
+class GameObject
+{
 public:
    GameObject() : 
       x{ 0.0 },
       y{ 0.0 },
       width{ 0 }
    { }
+   virtual ~GameObject() = default;
 
    virtual void Draw() const = 0;
-   void SetPos(double nx, double ny) { x = nx; y = ny; }
+   virtual void SetPos(double nx, double ny) { x = nx; y = ny; }
 
-   double GetY() const { return y; }
-   double GetX() const { return x; }
+   virtual double GetY() const { return y; }
+   virtual double GetX() const { return x; }
 
-   void SetWidth(uint16_t widthN) { width = widthN; }
-   uint16_t GetWidth() const { return width; }
+   virtual void SetWidth(uint16_t widthN) { width = widthN; }
+   virtual uint16_t GetWidth() const { return width; }
 protected:
    double x;
    double y;

@@ -9,8 +9,7 @@ LevelGUI::LevelGUI() :
    fps{ 0 },
    bombsNumber{ 0 },
    score{ 0 } 
-{ 
-
+{
 }
 
 void LevelGUI::Draw() const
@@ -49,7 +48,7 @@ void LevelGUI::Draw() const
    std::cout << "Score: " << score;
 }
 
-void __fastcall LevelGUI::SetParam(uint64_t passedTimeNew, uint64_t fpsNew, uint16_t bombsNumberNew, int16_t scoreNew)
+void  LevelGUI::SetParam(uint64_t passedTimeNew, uint64_t fpsNew, uint16_t bombsNumberNew, int16_t scoreNew)
 {
    passedTime = passedTimeNew;
    fps = fpsNew;

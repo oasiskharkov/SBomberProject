@@ -4,12 +4,13 @@
 
 #include "GameObject.h"
 
-class LevelGUI : public GameObject {
+class LevelGUI : public GameObject 
+{
 public:
    LevelGUI();
 
-   void __fastcall SetParam(uint64_t passedTimeNew, uint64_t fpsNew, uint16_t bombsNumberNew, int16_t scoreNew);
-   void __fastcall SetHeight(uint16_t heightN) { height = heightN; };
+   void SetParam(uint64_t passedTimeNew, uint64_t fpsNew, uint16_t bombsNumberNew, int16_t scoreNew);
+   void SetHeight(uint16_t heightN) { height = heightN; };
 
    uint16_t GetFinishX() const { return finishX; }
    void SetFinishX(uint16_t finishXN) { finishX = finishXN; }
