@@ -17,18 +17,17 @@ void LevelGUI::Draw() const
    MyTools::SetColor(MyTools::CC_White);
 
    MyTools::GotoXY(x, y);
-   char* buf = new (std::nothrow) char[width + 1];
+   auto deleter = [](char* p) { delete[] p; };
+   std::unique_ptr<char, decltype(deleter)> buf{ new (std::nothrow) char[width + 1], deleter };
    if (buf == nullptr)
    {
       return;
    }
-   memset(buf, '+', width);
-   buf[width] = '\0';
+   memset(buf.get(), '+', width);
+   *(buf.get() + width) = '\0';
    std::cout << buf;
    MyTools::GotoXY(x, y + height);
    std::cout << buf;
-   delete[] buf;
-   buf = nullptr;
 
    for (size_t i = size_t(y); i < height + y; i++)
    {
@@ -48,7 +47,7 @@ void LevelGUI::Draw() const
    std::cout << "Score: " << score;
 }
 
-void  LevelGUI::SetParam(uint64_t passedTimeNew, uint64_t fpsNew, uint16_t bombsNumberNew, int16_t scoreNew)
+void LevelGUI::SetParam(uint64_t passedTimeNew, uint64_t fpsNew, uint16_t bombsNumberNew, int16_t scoreNew)
 {
    passedTime = passedTimeNew;
    fps = fpsNew;

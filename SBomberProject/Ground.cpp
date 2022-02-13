@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 
 #include "MyTools.h"
 #include "Ground.h"
@@ -34,7 +35,10 @@ void Ground::Draw() const
    MyTools::SetColor(MyTools::CC_Green);
 
    const size_t bufSize = width + 1;
-   char* buf = new (std::nothrow) char[bufSize];
+   auto deleter = [](char* p) { delete[] p; };
+   std::unique_ptr<char, decltype(deleter)> buf{ new (std::nothrow) char[bufSize], deleter };
+
+   *(buf.get() + bufSize - 1) = '\0';
    if (buf == nullptr)
    {
       return;
@@ -43,8 +47,8 @@ void Ground::Draw() const
    if (vecCrates.size() == 0)
    {
       MyTools::GotoXY(x, y);
-      memset(buf, '=', bufSize);
-      buf[bufSize - 1] = '\0';
+      memset(buf.get(), '=', bufSize);
+      *(buf.get() + bufSize - 1) = '\0';
       std::cout << buf;
    }
    else
@@ -54,11 +58,11 @@ void Ground::Draw() const
       for (size_t i = X; i < width + X; i++)
       {
          c = (isInsideAnyCrater((double)i)) ? ' ' : '=';
-         buf[i - X] = c;
+         *(buf.get() + i - X) = c;
       }
 
       MyTools::GotoXY((double)X, y);
-      buf[bufSize - 1] = '\0';
+      *(buf.get() + bufSize - 1) = '\0';
       std::cout << buf;
 
       for (size_t i = 0; i < vecCrates.size(); i++)
@@ -66,8 +70,6 @@ void Ground::Draw() const
          vecCrates[i].Draw();
       }
    }
-
-   delete[] buf;
 }
 
 bool Ground::isInsideAnyCrater(double x) const

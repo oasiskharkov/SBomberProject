@@ -1,7 +1,5 @@
 #pragma once
 
-#include <stdint.h>
-
 #include "DestroyableGroundObject.h"
 
 class Tank : public DestroyableGroundObject

@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "Bomb.h"
 #include "MyTools.h"
 

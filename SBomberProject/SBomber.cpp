@@ -2,12 +2,11 @@
 #include <windows.h>
 #include <memory>
 
-#include "MyTools.h"
 #include "SBomber.h"
-#include "Ground.h"
-#include "Tank.h"
+#include "MyTools.h"
 #include "House.h"
-#include "Command.h"
+#include "BombIterator.h"
+#include "TankAdapter.h"
 
 using namespace MyTools;
 
@@ -25,13 +24,13 @@ SBomber::SBomber() :
    logger.OpenFile("log.txt");
    logger.WriteToLog(std::string(__FUNCTION__) + " was invoked");
 
-   Plane* p = new Plane;
-   p->SetDirection(1, 0.1);
-   p->SetSpeed(4);
-   p->SetPos(5, 10);
-   vecDynamicObj.push_back(p);
+   std::shared_ptr<Plane> pPlane = std::make_shared<Plane>();
+   pPlane->SetDirection(1, 0.1);
+   pPlane->SetSpeed(4);
+   pPlane->SetPos(5, 10);
+   vecDynamicObj.emplace_back(pPlane);
 
-   LevelGUI* pGUI = new LevelGUI;
+   std::shared_ptr<LevelGUI> pGUI = std::make_shared<LevelGUI>();
    pGUI->SetParam(passedTime, fps, bombsNumber, score);
    const uint16_t maxX = GetMaxX();
    const uint16_t maxY = GetMaxY();
@@ -41,47 +40,33 @@ SBomber::SBomber() :
    pGUI->SetWidth(width);
    pGUI->SetHeight(maxY - 4);
    pGUI->SetFinishX(offset + width - 4);
-   vecStaticObj.push_back(pGUI);
+   vecStaticObj.emplace_back(pGUI);
 
-   Ground* pGr = new Ground;
+   std::shared_ptr<Ground> pGround = std::make_shared<Ground>();
    const uint16_t groundY = maxY - 5;
-   pGr->SetPos(offset + 1, groundY);
-   pGr->SetWidth(width - 2);
-   vecStaticObj.push_back(pGr);
+   pGround->SetPos(offset + 1, groundY);
+   pGround->SetWidth(width - 2);
+   vecStaticObj.emplace_back(pGround);
 
-   Tank* pTank = new Tank;
-   pTank->SetWidth(13);
-   pTank->SetPos(30, groundY - 1);
-   vecStaticObj.push_back(pTank);
+   std::shared_ptr<TankAdapter> pTankAdapter = std::make_shared<TankAdapter>();
+   pTankAdapter->SetWidth(13);
+   pTankAdapter->SetPos(30, groundY - 1);
+   vecStaticObj.emplace_back(pTankAdapter);
 
-   pTank = new Tank;
+   std::shared_ptr<Tank> pTank = std::make_shared<Tank>();
    pTank->SetWidth(13);
    pTank->SetPos(50, groundY - 1);
-   vecStaticObj.push_back(pTank);
+   vecStaticObj.emplace_back(pTank);
 
-   House* pHouse = new House;
+   std::shared_ptr<Tank> pTank2 = std::make_shared<Tank>();
+   pTank2->SetWidth(13);
+   pTank2->SetPos(70, groundY - 1);
+   vecStaticObj.emplace_back(pTank2);
+
+   std::shared_ptr<House> pHouse = std::make_shared<House>();
    pHouse->SetWidth(13);
-   pHouse->SetPos(80, groundY - 1);
-   vecStaticObj.push_back(pHouse);
-}
-
-SBomber::~SBomber()
-{
-   for (size_t i = 0; i < vecDynamicObj.size(); ++i)
-   {
-      if (vecDynamicObj[i] != nullptr)
-      {
-         delete vecDynamicObj[i];
-      }
-   }
-
-   for (size_t i = 0; i < vecStaticObj.size(); ++i)
-   {
-      if (vecStaticObj[i] != nullptr)
-      {
-         delete vecStaticObj[i];
-      }
-   }
+   pHouse->SetPos(90, groundY - 1);
+   vecStaticObj.emplace_back(pHouse);
 }
 
 void SBomber::MoveObjects()
@@ -150,30 +135,38 @@ void SBomber::CheckDestroyableObjects(BombDecorator* pBomb)
 void SBomber::DeleteDynamicObj(DynamicObject* pObj)
 {
    std::unique_ptr<Command> command = std::make_unique<DeleteDynamicObjectCommand>(vecDynamicObj, pObj);
-   command->Execute();
+   CommandExecuter(std::move(command));
 }
 
 void SBomber::DeleteStaticObj(GameObject* pObj)
 {
    std::unique_ptr<Command> command = std::make_unique<DeleteStaticObjectCommand>(vecStaticObj, pObj);
-   command->Execute();
+   CommandExecuter(std::move(command));
 }
 
 std::vector<DestroyableGroundObject*> SBomber::FindDestroyableGroundObjects() const
 {
    std::vector<DestroyableGroundObject*> vec;
    Tank* pTank;
+   TankAdapter* pTankAdapter;
    House* pHouse;
    for (size_t i = 0; i < vecStaticObj.size(); ++i)
    {
-      pTank = dynamic_cast<Tank*>(vecStaticObj[i]);
+      pTank = dynamic_cast<Tank*>(vecStaticObj[i].get());
       if (pTank != nullptr)
       {
          vec.push_back(pTank);
          continue;
       }
 
-      pHouse = dynamic_cast<House*>(vecStaticObj[i]);
+      pTankAdapter = dynamic_cast<TankAdapter*>(vecStaticObj[i].get());
+      if (pTankAdapter != nullptr)
+      {
+         vec.push_back(pTankAdapter);
+         continue;
+      }
+
+      pHouse = dynamic_cast<House*>(vecStaticObj[i].get());
       if (pHouse != nullptr)
       {
          vec.push_back(pHouse);
@@ -190,7 +183,7 @@ Ground* SBomber::FindGround() const
 
    for (size_t i = 0; i < vecStaticObj.size(); ++i)
    {
-      pGround = dynamic_cast<Ground*>(vecStaticObj[i]);
+      pGround = dynamic_cast<Ground*>(vecStaticObj[i].get());
       if (pGround != nullptr)
       {
          return pGround;
@@ -204,23 +197,20 @@ std::vector<BombDecorator*> SBomber::FindAllBombs() const
 {
    std::vector<BombDecorator*> vecBombs;
 
-   for (size_t i = 0; i < vecDynamicObj.size(); ++i)
+   BombIterator bi(vecDynamicObj);
+   for (auto it = bi.begin(); it != bi.end(); ++it)
    {
-      BombDecorator* pBomb = dynamic_cast<BombDecorator*>(vecDynamicObj[i]);
-      if (pBomb != nullptr)
-      {
-         vecBombs.push_back(pBomb);
-      }
+      vecBombs.push_back(*it);
    }
-
    return vecBombs;
 }
+
 
 Plane* SBomber::FindPlane() const
 {
    for (size_t i = 0; i < vecDynamicObj.size(); ++i)
    {
-      Plane* p = dynamic_cast<Plane*>(vecDynamicObj[i]);
+      Plane* p = dynamic_cast<Plane*>(vecDynamicObj[i].get());
       if (p != nullptr)
       {
          return p;
@@ -234,7 +224,7 @@ LevelGUI* SBomber::FindLevelGUI() const
 {
    for (size_t i = 0; i < vecStaticObj.size(); ++i)
    {
-      LevelGUI* p = dynamic_cast<LevelGUI*>(vecStaticObj[i]);
+      LevelGUI* p = dynamic_cast<LevelGUI*>(vecStaticObj[i].get());
       if (p != nullptr)
       {
          return p;
@@ -330,6 +320,14 @@ void SBomber::DropBomb()
       logger.WriteToLog(std::string(__FUNCTION__) + " was invoked");
 
       std::unique_ptr<Command> command = std::make_unique<DropBombCommand>(vecDynamicObj, FindPlane(), bombsNumber, score);
+      CommandExecuter(std::move(command));
+   }
+}
+
+void SBomber::CommandExecuter(std::unique_ptr<Command> command)
+{
+   if (command)
+   {
       command->Execute();
    }
 }
