@@ -3,6 +3,11 @@
 #include "House.h"
 #include "MyTools.h"
 
+House::House()
+{
+   memset((char*)look, ' ', houseWidth * houseHeight);
+}
+
 bool House::isInside(double x1, double x2) const
 {
    const double XBeg = x + 2;
@@ -29,16 +34,12 @@ bool House::isInside(double x1, double x2) const
 void House::Draw() const
 {
    MyTools::SetColor(MyTools::CC_Yellow);
-   MyTools::GotoXY(x, y - 5);
-   std::cout << "  ########  ";
-   MyTools::GotoXY(x, y - 4);
-   std::cout << "##        ##";
-   MyTools::GotoXY(x, y - 3);
-   std::cout << "############";
-   MyTools::GotoXY(x, y - 2);
-   std::cout << "#          #";
-   MyTools::GotoXY(x, y - 1);
-   std::cout << "#          #";
-   MyTools::GotoXY(x, y);
-   std::cout << "############";
+   for (size_t i = 0; i < houseHeight; ++i)
+   {
+      MyTools::GotoXY(x, y - i);
+      for (size_t j = 0; j < houseWidth; ++j)
+      {
+         std::cout << look[houseHeight - i - 1][j];
+      }
+   }
 }

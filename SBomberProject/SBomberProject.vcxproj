@@ -142,9 +142,11 @@
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="BombDecorator.cpp" />
     <ClCompile Include="BombIterator.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Command.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="House.cpp" />
+    <ClCompile Include="HouseBuilder.cpp" />
     <ClCompile Include="LevelGUI.cpp" />
     <ClCompile Include="MyTools.cpp" />
     <ClCompile Include="Plane.cpp" />
@@ -158,12 +160,14 @@
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="BombDecorator.h" />
     <ClInclude Include="BombIterator.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="DynamicObject.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="DestroyableGroundObject.h" />
     <ClInclude Include="House.h" />
+    <ClInclude Include="HouseBuilder.h" />
     <ClInclude Include="LevelGUI.h" />
     <ClInclude Include="MyTools.h" />
     <ClInclude Include="Plane.h" />

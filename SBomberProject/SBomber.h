@@ -11,6 +11,7 @@
 #include "MyTools.h"
 #include "Tank.h"
 #include "Command.h"
+#include "Collision.h"
 
 class SBomber
 {
@@ -27,7 +28,6 @@ public:
    void DrawFrame();
    void MoveObjects();
    void CheckObjects();
-
 private:
    void CheckPlaneAndLevelGUI();
    void CheckBombsAndGround();
@@ -61,4 +61,5 @@ private:
    int16_t score;
 
    MyTools::LoggerSingleton& logger;
+   CollisionDetector collisionDetector;
 };

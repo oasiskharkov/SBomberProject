@@ -4,11 +4,12 @@
 
 #include "SBomber.h"
 #include "MyTools.h"
-#include "House.h"
 #include "BombIterator.h"
 #include "TankAdapter.h"
+#include "HouseBuilder.h"
 
 using namespace MyTools;
+using namespace std::placeholders;
 
 SBomber::SBomber() :
    exitFlag{ false },
@@ -19,8 +20,11 @@ SBomber::SBomber() :
    bombsNumber{ 10 },
    fps{ 0 },
    score{ 0 },
-   logger{ LoggerSingleton::getInstance(FileLoggerSingleton::getInstance()) }
+   logger{ LoggerSingleton::getInstance(FileLoggerSingleton::getInstance()) },
+   collisionDetector{ std::make_unique<CollisionImplWin>() }
 {
+   srand(static_cast<unsigned>(time(nullptr)));
+
    logger.OpenFile("log.txt");
    logger.WriteToLog(std::string(__FUNCTION__) + " was invoked");
 
@@ -64,9 +68,20 @@ SBomber::SBomber() :
    vecStaticObj.emplace_back(pTank2);
 
    std::shared_ptr<House> pHouse = std::make_shared<House>();
-   pHouse->SetWidth(13);
+   pHouse->SetWidth(12);
    pHouse->SetPos(90, groundY - 1);
    vecStaticObj.emplace_back(pHouse);
+
+   HouseBuilderA hbA;
+   HouseBuilderB hbB;
+   if (rand() % 2 == 0)
+   {
+      Director::createHouse(hbA, *pHouse);
+   }
+   else
+   {
+      Director::createHouse(hbB, *pHouse);
+   }
 }
 
 void SBomber::MoveObjects()
@@ -92,44 +107,28 @@ void SBomber::CheckObjects()
 
 void SBomber::CheckPlaneAndLevelGUI()
 {
-   if (FindPlane()->GetX() > FindLevelGUI()->GetFinishX())
-   {
-      exitFlag = true;
-   }
+   std::function<Plane*()> fP = std::bind(&SBomber::FindPlane, this);
+   std::function<LevelGUI*()> fLG = std::bind(&SBomber::FindLevelGUI, this);
+   
+   collisionDetector.CheckPlaneAndLevelGUI(std::move(fP), std::move(fLG), exitFlag);
 }
 
 void SBomber::CheckBombsAndGround()
 {
-   std::vector<BombDecorator*> vecBombs = FindAllBombs();
-   Ground* pGround = FindGround();
-   const double y = pGround->GetY();
-   for (size_t i = 0; i < vecBombs.size(); ++i)
-   {
-      if (vecBombs[i]->GetY() >= y) // Пересечение бомбы с землей
-      {
-         pGround->AddCrater(vecBombs[i]->GetX());
-         CheckDestroyableObjects(vecBombs[i]);
-         DeleteDynamicObj(vecBombs[i]);
-      }
-   }
+   std::function<std::vector<BombDecorator*>()> fB = std::bind(&SBomber::FindAllBombs, this);
+   std::function<Ground*()> fG = std::bind(&SBomber::FindGround, this);
+   std::function<void(BombDecorator*)> fCDO = std::bind(&SBomber::CheckDestroyableObjects, this, _1);
+   std::function<void(BombDecorator*)> fDDO = std::bind(&SBomber::DeleteDynamicObj, this, _1);
 
+   collisionDetector.CheckBombsAndGround(std::move(fB), std::move(fG), std::move(fCDO), std::move(fDDO));
 }
 
 void SBomber::CheckDestroyableObjects(BombDecorator* pBomb)
 {
-   std::vector<DestroyableGroundObject*> vecDestroyableObjects = FindDestroyableGroundObjects();
-   const double size = pBomb->GetWidth();
-   const double size_2 = size / 2;
-   for (size_t i = 0; i < vecDestroyableObjects.size(); ++i)
-   {
-      const double x1 = pBomb->GetX() - size_2;
-      const double x2 = x1 + size;
-      if (vecDestroyableObjects[i]->isInside(x1, x2))
-      {
-         score += vecDestroyableObjects[i]->GetScore();
-         DeleteStaticObj(vecDestroyableObjects[i]);
-      }
-   }
+   std::function<std::vector<DestroyableGroundObject*>()> fDGO = std::bind(&SBomber::FindDestroyableGroundObjects, this);
+   std::function<void(GameObject*)> fDSO = std::bind(&SBomber::DeleteStaticObj, this, _1);
+
+   collisionDetector.CheckDestroyableObjects(std::move(fDGO), std::move(fDSO), score, pBomb);
 }
 
 void SBomber::DeleteDynamicObj(DynamicObject* pObj)
