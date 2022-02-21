@@ -1,8 +1,5 @@
 #pragma once
 
-#include <iostream>
-
-#include "DynamicObject.h"
 #include "Bomb.h"
 
 class BombDecorator : public DynamicObject

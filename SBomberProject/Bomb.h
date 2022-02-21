@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 #include "DynamicObject.h"
 
 class Bomb : public DynamicObject

@@ -4,7 +4,6 @@
 void BombDecorator::Draw() const
 {
    bomb.Draw();
-   // Некоторое изменение внешнего вида бомбы
    MyTools::GotoXY(bomb.GetX(), bomb.GetY() - 1);
    std::cout << "|";
 }

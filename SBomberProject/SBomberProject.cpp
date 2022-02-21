@@ -1,5 +1,4 @@
-﻿
-#include <conio.h>
+﻿#include <conio.h>
 #include <thread>
 #include <chrono>
 

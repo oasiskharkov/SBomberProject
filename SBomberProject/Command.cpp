@@ -3,7 +3,7 @@
 #include "BombDecorator.h"
 #include "Ground.h"
 
-DeleteDynamicObjectCommand::DeleteDynamicObjectCommand(std::vector<DynamicObject*>& dObjects, DynamicObject* dObject) :
+DeleteDynamicObjectCommand::DeleteDynamicObjectCommand(std::vector<std::shared_ptr<DynamicObject>>& dObjects, DynamicObject* dObject) :
    dynamicObjects{ dObjects },
    dynamicObject{ dObject }
 {
@@ -18,7 +18,7 @@ void DeleteDynamicObjectCommand::Execute()
 
    for (auto it = dynamicObjects.begin(); it != dynamicObjects.end(); ++it)
    {
-      if (*it == dynamicObject)
+      if ((*it).get() == dynamicObject)
       {
          dynamicObjects.erase(it);
          break;
@@ -26,7 +26,7 @@ void DeleteDynamicObjectCommand::Execute()
    }
 }
 
-DeleteStaticObjectCommand::DeleteStaticObjectCommand(std::vector<GameObject*>& gObjects, GameObject* gObject) :
+DeleteStaticObjectCommand::DeleteStaticObjectCommand(std::vector<std::shared_ptr<GameObject>>& gObjects, GameObject* gObject) :
    gameObjects{ gObjects},
    gameObject{ gObject }
 {
@@ -41,7 +41,7 @@ void DeleteStaticObjectCommand::Execute()
 
    for (auto it = gameObjects.begin(); it != gameObjects.end(); ++it)
    {
-      if (*it == gameObject)
+      if ((*it).get() == gameObject)
       {
          gameObjects.erase(it);
          break;
@@ -49,7 +49,7 @@ void DeleteStaticObjectCommand::Execute()
    }
 }
 
-DropBombCommand::DropBombCommand(std::vector<DynamicObject*>& dObjects, const Plane* plane, uint16_t& bombsNumber, int16_t& score) :
+DropBombCommand::DropBombCommand(std::vector<std::shared_ptr<DynamicObject>>& dObjects, const Plane* plane, uint16_t& bombsNumber, int16_t& score) :
    dynamicObjects{ dObjects },
    plane{ plane },
    bombsNumber{ bombsNumber},
@@ -68,7 +68,7 @@ void DropBombCommand::Execute()
    double x = plane->GetX() + 4;
    double y = plane->GetY() + 2;
 
-   DynamicObject* bomb = new BombDecorator;
+   std::shared_ptr<BombDecorator> bomb = std::make_shared<BombDecorator>();
    if (!bomb)
    {
       return;
@@ -81,5 +81,5 @@ void DropBombCommand::Execute()
 
    dynamicObjects.emplace_back(bomb);
    bombsNumber--;
-   score -= Bomb::BombCost;
+   //score -= Bomb::BombCost;
 }
