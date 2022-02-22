@@ -131,7 +131,7 @@ void SBomber::CheckBombsAndGround()
       if (vecBombs[i]->GetY() >= y)
       {
          pGround->AddCrater(vecBombs[i]->GetX());
-         auto dgos = vecBombs[i]->CheckDestroyableObjects();
+         const auto& dgos = vecBombs[i]->CheckDestroyableObjects();
          for (const auto& dgo : dgos)
          {
             score += dgo->GetScore();
@@ -173,21 +173,21 @@ std::vector<DestroyableGroundObject*> SBomber::FindDestroyableGroundObjects() co
       pTank = dynamic_cast<Tank*>(vecStaticObj[i].get());
       if (pTank != nullptr)
       {
-         vec.push_back(pTank);
+         vec.emplace_back(pTank);
          continue;
       }
 
       pTankAdapter = dynamic_cast<TankAdapter*>(vecStaticObj[i].get());
       if (pTankAdapter != nullptr)
       {
-         vec.push_back(pTankAdapter);
+         vec.emplace_back(pTankAdapter);
          continue;
       }
 
       pHouse = dynamic_cast<House*>(vecStaticObj[i].get());
       if (pHouse != nullptr)
       {
-         vec.push_back(pHouse);
+         vec.emplace_back(pHouse);
          continue;
       }
    }
@@ -207,7 +207,6 @@ Ground* SBomber::FindGround() const
          return pGround;
       }
    }
-
    return nullptr;
 }
 
@@ -218,7 +217,7 @@ std::vector<BombDecorator*> SBomber::FindAllBombs() const
    BombIterator bi(vecDynamicObj);
    for (auto it = bi.begin(); it != bi.end(); ++it)
    {
-      vecBombs.push_back(*it);
+      vecBombs.emplace_back(*it);
    }
    return vecBombs;
 }
@@ -234,7 +233,6 @@ Plane* SBomber::FindPlane() const
          return p;
       }
    }
-
    return nullptr;
 }
 
@@ -248,7 +246,6 @@ LevelGUI* SBomber::FindLevelGUI() const
          return p;
       }
    }
-
    return nullptr;
 }
 

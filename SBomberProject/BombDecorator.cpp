@@ -67,13 +67,10 @@ void BombDecorator::AddObserver(DestroyableGroundObject* observer)
 std::vector<DestroyableGroundObject*> BombDecorator::CheckDestroyableObjects()
 {
    std::vector<DestroyableGroundObject*> vecDestroyableObjects;
-   const double size = GetWidth();
-   const double size_2 = size / 2;
+   
    for (size_t i = 0; i < observers.size(); ++i)
    {
-      const double x1 = GetX() - size_2;
-      const double x2 = x1 + size;
-      if (observers[i]->HandleInsideCheck(x1, x2))
+      if (observers[i]->HandleInsideCheck(this))
       {
          vecDestroyableObjects.emplace_back(observers[i]);
       }

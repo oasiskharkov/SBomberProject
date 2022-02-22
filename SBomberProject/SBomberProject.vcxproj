@@ -145,6 +145,7 @@
     <ClCompile Include="BombIterator.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Command.cpp" />
+    <ClCompile Include="DestroyableGroundObject.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="House.cpp" />
     <ClCompile Include="HouseBuilder.cpp" />

@@ -92,5 +92,5 @@ void Ground::AddCrater(double xn)
    Crater cr;
    cr.SetPos(int(xn), y);
    cr.SetWidth(SMALL_CRATER_SIZE);
-   vecCrates.push_back(cr);
+   vecCrates.emplace_back(cr);
 }

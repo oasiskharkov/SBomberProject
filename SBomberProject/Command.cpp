@@ -57,7 +57,6 @@ DropBombCommand::DropBombCommand(std::vector<std::shared_ptr<DynamicObject>>& dO
    bombsNumber{ bombsNumber},
    score{score}
 {
-
 }
 
 void DropBombCommand::Execute()
