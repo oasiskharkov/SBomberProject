@@ -93,6 +93,7 @@ void SBomber::MoveObjects()
       if (vecDynamicObj[i] != nullptr)
       {
          vecDynamicObj[i]->Move(deltaTime);
+         vecDynamicObj[i]->Accept(logVisitor);
       }
    }
 };
@@ -115,12 +116,30 @@ void SBomber::CheckPlaneAndLevelGUI()
 
 void SBomber::CheckBombsAndGround()
 {
-   std::function<std::vector<BombDecorator*>()> fB = std::bind(&SBomber::FindAllBombs, this);
+   /*std::function<std::vector<BombDecorator*>()> fB = std::bind(&SBomber::FindAllBombs, this);
    std::function<Ground*()> fG = std::bind(&SBomber::FindGround, this);
    std::function<void(BombDecorator*)> fCDO = std::bind(&SBomber::CheckDestroyableObjects, this, _1);
    std::function<void(BombDecorator*)> fDDO = std::bind(&SBomber::DeleteDynamicObj, this, _1);
 
-   collisionDetector.CheckBombsAndGround(std::move(fB), std::move(fG), std::move(fCDO), std::move(fDDO));
+   collisionDetector.CheckBombsAndGround(std::move(fB), std::move(fG), std::move(fCDO), std::move(fDDO));*/
+
+   std::vector<BombDecorator*> vecBombs = FindAllBombs();
+   Ground* pGround = FindGround();
+   const double y = pGround->GetY();
+   for (size_t i = 0; i < vecBombs.size(); ++i)
+   {
+      if (vecBombs[i]->GetY() >= y)
+      {
+         pGround->AddCrater(vecBombs[i]->GetX());
+         auto dgos = vecBombs[i]->CheckDestroyableObjects();
+         for (const auto& dgo : dgos)
+         {
+            score += dgo->GetScore();
+            DeleteStaticObj(dgo);
+         }
+         DeleteDynamicObj(vecBombs[i]);
+      }
+   }
 }
 
 void SBomber::CheckDestroyableObjects(BombDecorator* pBomb)
@@ -317,8 +336,8 @@ void SBomber::DropBomb()
    if (bombsNumber > 0)
    {
       logger.WriteToLog(std::string(__FUNCTION__) + " was invoked");
-
-      std::unique_ptr<Command> command = std::make_unique<DropBombCommand>(vecDynamicObj, FindPlane(), bombsNumber, score);
+      auto dgos = FindDestroyableGroundObjects();
+      std::unique_ptr<Command> command = std::make_unique<DropBombCommand>(vecDynamicObj, dgos, FindPlane(), bombsNumber, score);
       CommandExecuter(std::move(command));
    }
 }

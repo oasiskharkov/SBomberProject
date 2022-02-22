@@ -15,3 +15,8 @@ void Plane::Draw() const
    MyTools::GotoXY(x + 3, y + 1);
    std::cout << "////";
 }
+
+void Plane::Accept(const Visitor& v)
+{
+   v.log(*this);
+}

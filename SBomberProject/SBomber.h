@@ -12,6 +12,7 @@
 #include "Tank.h"
 #include "Command.h"
 #include "Collision.h"
+#include "Visitor.h"
 
 class SBomber
 {
@@ -62,4 +63,5 @@ private:
 
    MyTools::LoggerSingleton& logger;
    CollisionDetector collisionDetector;
+   LogVisitor logVisitor;
 };

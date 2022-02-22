@@ -1,6 +1,9 @@
 #pragma once
 
+#include <vector>
+
 #include "Bomb.h"
+#include "DestroyableGroundObject.h"
 
 class BombDecorator : public DynamicObject
 {
@@ -14,6 +17,10 @@ public:
    uint16_t GetWidth() const override;
    void SetSpeed(double sp) override;
    void SetDirection(double dx, double dy) override;
+   void Accept(const Visitor& v) override;
+   void AddObserver(DestroyableGroundObject* observer);
+   std::vector<DestroyableGroundObject*> CheckDestroyableObjects();
 private:
    Bomb bomb;
+   std::vector<DestroyableGroundObject*> observers;
 };
