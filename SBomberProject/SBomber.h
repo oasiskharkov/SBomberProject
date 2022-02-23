@@ -13,6 +13,7 @@
 #include "Command.h"
 #include "Collision.h"
 #include "Visitor.h"
+#include "Mediator.h"
 
 class SBomber
 {
@@ -64,4 +65,5 @@ private:
    MyTools::LoggerSingleton& logger;
    CollisionDetector collisionDetector;
    LogVisitor logVisitor;
+   Mediator mediator;
 };

@@ -2,6 +2,14 @@
 
 #include "Tank.h"
 #include "MyTools.h"
+#include "Mediator.h"
+
+Tank::Tank(Mediator* med) :
+   time{ 0.f },
+   mediator{ med }
+{
+
+}
 
 bool Tank::isInside(double x1, double x2) const
 {
@@ -37,4 +45,15 @@ void Tank::Draw() const
    std::cout << "    #####";
    MyTools::GotoXY(x, y);
    std::cout << " ###########";
+}
+
+void Tank::Update(float dt)
+{
+   time += dt;
+   if (time > sendMessageTime)
+   {
+      size_t choice = rand() % messages.size();
+      mediator->SendMessage(messages[choice]);
+      time = 0.f;
+   }
 }

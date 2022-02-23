@@ -150,6 +150,7 @@
     <ClCompile Include="House.cpp" />
     <ClCompile Include="HouseBuilder.cpp" />
     <ClCompile Include="LevelGUI.cpp" />
+    <ClCompile Include="Mediator.cpp" />
     <ClCompile Include="MyTools.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="SBomber.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="House.h" />
     <ClInclude Include="HouseBuilder.h" />
     <ClInclude Include="LevelGUI.h" />
+    <ClInclude Include="Mediator.h" />
     <ClInclude Include="MyTools.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="SBomber.h" />

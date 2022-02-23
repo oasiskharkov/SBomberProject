@@ -28,7 +28,16 @@ SBomber::SBomber() :
    logger.OpenFile("log.txt");
    logger.WriteToLog(std::string(__FUNCTION__) + " was invoked");
 
-   std::shared_ptr<Plane> pPlane = std::make_shared<Plane>();
+   std::shared_ptr<Plane> pPlane;
+   if (rand() % 2 == 0)
+   {
+      pPlane = std::make_shared<ColorPlane>();
+   }
+   else
+   {
+      pPlane = std::make_shared<BigPlane>();
+   } 
+   
    pPlane->SetDirection(1, 0.1);
    pPlane->SetSpeed(4);
    pPlane->SetPos(5, 10);
@@ -57,12 +66,12 @@ SBomber::SBomber() :
    pTankAdapter->SetPos(30, groundY - 1);
    vecStaticObj.emplace_back(pTankAdapter);
 
-   std::shared_ptr<Tank> pTank = std::make_shared<Tank>();
+   std::shared_ptr<Tank> pTank = std::make_shared<Tank>(&mediator);
    pTank->SetWidth(13);
    pTank->SetPos(50, groundY - 1);
    vecStaticObj.emplace_back(pTank);
 
-   std::shared_ptr<Tank> pTank2 = std::make_shared<Tank>();
+   std::shared_ptr<Tank> pTank2 = std::make_shared<Tank>(&mediator);
    pTank2->SetWidth(13);
    pTank2->SetPos(70, groundY - 1);
    vecStaticObj.emplace_back(pTank2);
@@ -82,6 +91,8 @@ SBomber::SBomber() :
    {
       Director::createHouse(hbB, *pHouse);
    }
+
+   mediator.SetReceiver(pGUI.get());
 }
 
 void SBomber::MoveObjects()
@@ -324,6 +335,19 @@ void SBomber::TimeFinish()
    finishTime = GetTickCount64();
    deltaTime = uint16_t(finishTime - startTime);
    passedTime += deltaTime;
+
+   for (size_t i = 0; i < vecStaticObj.size(); ++i)
+   {
+      if (typeid(Tank) == typeid(*vecStaticObj[i].get()))
+      {
+         if (Tank* pTank = dynamic_cast<Tank*>(vecStaticObj[i].get()))
+         {
+            pTank->Update(deltaTime / 1000.f);
+         }
+      }
+   }
+
+   mediator.Update(deltaTime / 1000.f);
 
    logger.WriteToLog(std::string(__FUNCTION__) + " deltaTime = ", (int)deltaTime);
 }
