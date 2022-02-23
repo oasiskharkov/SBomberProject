@@ -49,7 +49,7 @@ void LevelGUI::Draw() const
 
    if (!message.empty())
    {
-      MyTools::GotoXY(5, height + 1);
+      MyTools::GotoXY(5, height + 2);
 
       std::cout << "Message: " << message;
    }
