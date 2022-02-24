@@ -66,5 +66,5 @@ void BigPlane::DrawWing() const
 void BigPlane::DrawBody() const
 {
    MyTools::GotoXY(x, y);
-   std::cout << "DDDDDDDDDDDDD>";
+   std::cout << "DDDDDDDDDDDDDD>";
 }
