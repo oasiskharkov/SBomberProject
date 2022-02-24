@@ -8,10 +8,9 @@ class DynamicObject : public GameObject
 public:
     DynamicObject() : 
        speed{ 0.0 },
-
        xDirction{ 0.0 },
        yDirection{ 0.0 }
-    { }
+    {}
 
    virtual void SetSpeed(double sp) { speed = sp; }
    virtual void SetDirection(double dx, double dy) { xDirction = dx; yDirection = dy; }

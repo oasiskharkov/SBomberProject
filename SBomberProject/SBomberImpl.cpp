@@ -53,7 +53,7 @@ SBomberImpl::SBomberImpl() :
 
    std::shared_ptr<Ground> pGround = std::make_shared<Ground>();
    const uint16_t groundY = maxY - 5;
-   pGround->SetPos(offset + 1, groundY);
+   pGround->SetPos(offset + 1, (double)groundY);
    pGround->SetWidth(width - 2);
    vecStaticObj.emplace_back(pGround);
 
@@ -101,10 +101,10 @@ void SBomberImpl::CheckPlaneAndLevelGUI()
 
 void SBomberImpl::CheckBombsAndGround()
 {
-   /*std::function<std::vector<BombDecorator*>()> fB = std::bind(&SBomber::FindAllBombs, this);
-   std::function<Ground*()> fG = std::bind(&SBomber::FindGround, this);
-   std::function<void(BombDecorator*)> fCDO = std::bind(&SBomber::CheckDestroyableObjects, this, _1);
-   std::function<void(BombDecorator*)> fDDO = std::bind(&SBomber::DeleteDynamicObj, this, _1);
+   /*std::function<std::vector<BombDecorator*>()> fB = std::bind(&SBomberImpl::FindAllBombs, this);
+   std::function<Ground*()> fG = std::bind(&SBomberImpl::FindGround, this);
+   std::function<void(BombDecorator*)> fCDO = std::bind(&SBomberImpl::CheckDestroyableObjects, this, _1);
+   std::function<void(BombDecorator*)> fDDO = std::bind(&SBomberImpl::DeleteDynamicObj, this, _1);
 
    collisionDetector.CheckBombsAndGround(std::move(fB), std::move(fG), std::move(fCDO), std::move(fDDO));*/
 
@@ -119,8 +119,11 @@ void SBomberImpl::CheckBombsAndGround()
          const auto& dgos = vecBombs[i]->CheckDestroyableObjects();
          for (const auto& dgo : dgos)
          {
-            score += dgo->GetScore();
-            DeleteStaticObj(dgo);
+            if (dgo)
+            {
+               score += dgo->GetScore();
+               DeleteStaticObj(dgo);
+            }
          }
          DeleteDynamicObj(vecBombs[i]);
       }

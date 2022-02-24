@@ -2,7 +2,8 @@
 
 #include <iostream>
 
-class TankAdaptee {
+class TankAdaptee 
+{
 public:
    TankAdaptee();
 

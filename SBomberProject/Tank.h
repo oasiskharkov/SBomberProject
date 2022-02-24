@@ -6,18 +6,17 @@
 
 class Mediator;
 
-namespace {
-   std::array<std::string, 5> messages {
+namespace 
+{
+   std::array<std::string, 5> messages 
+   {
       "Stinky",
       "Dummbas",
       "Asshole",
       "Stupid",
       "Motherfucker"
    };
-}
 
-namespace
-{
    constexpr float sendMessageTime = 2.f;
 }
 

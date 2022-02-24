@@ -6,7 +6,7 @@
 
 namespace MyTools 
 {
-   // Палитра цветов от 0 до 15
+   // color palette 0..15
    enum ConsoleColor
    {
       CC_Black = 0,
@@ -26,7 +26,6 @@ namespace MyTools
       CC_Yellow,
       CC_White
    };
-
 
    void ClrScr();
    void  GotoXY(double x, double y);
