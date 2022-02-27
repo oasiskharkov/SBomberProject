@@ -295,6 +295,11 @@ SBomber::SBomber() :
    
 }
 
+SBomber::~SBomber()
+{
+
+}
+
 void SBomber::MoveObjects()
 {
    impl->logger.WriteToLog(std::string(__FUNCTION__) + " was invoked");

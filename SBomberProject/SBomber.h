@@ -8,6 +8,7 @@ class SBomber
 {
 public:
    SBomber();
+   ~SBomber();
 
    bool GetExitFlag() const; 
 
