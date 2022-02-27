@@ -154,7 +154,6 @@
     <ClCompile Include="MyTools.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="SBomber.cpp" />
-    <ClCompile Include="SBomberImpl.cpp" />
     <ClCompile Include="SBomberProject.cpp" />
     <ClCompile Include="Tank.cpp" />
     <ClCompile Include="TankAdaptee.cpp" />

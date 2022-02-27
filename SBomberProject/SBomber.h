@@ -8,7 +8,6 @@ class SBomber
 {
 public:
    SBomber();
-   ~SBomber();
 
    bool GetExitFlag() const; 
 
@@ -20,5 +19,5 @@ public:
    void MoveObjects();
    void CheckObjects();
 private:
-   SBomberImpl* impl;
+   std::unique_ptr<SBomberImpl> impl;
 };
