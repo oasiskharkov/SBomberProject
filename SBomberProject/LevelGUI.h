@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameObject.h"
+#include <string>
 
 class LevelGUI : public GameObject 
 {
@@ -14,6 +15,8 @@ public:
    void SetFinishX(uint16_t finishXN) { finishX = finishXN; }
 
    void Draw() const override;
+   void BeNotified(const std::string& mes);
+   float GetPassedTime() const { return passedTime / 1000.f; }
 private:
    uint16_t height;
    uint16_t finishX = 109;
@@ -21,6 +24,7 @@ private:
    uint64_t fps;
    uint16_t bombsNumber;
    int16_t score;
+   std::string message;
 };
 
 

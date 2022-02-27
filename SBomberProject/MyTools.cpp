@@ -11,8 +11,6 @@
 #include "MyTools.h"
 
 namespace MyTools {
-   //=============================================================================================
-
    void ClrScr()
    {
       system("cls");
@@ -60,8 +58,6 @@ namespace MyTools {
       HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
       SetConsoleTextAttribute(hConsole, color); // color =  (WORD)((BackgroundColor << 4) | TextColor))
    }
-
-   //=============================================================================================
 
    std::string GetCurDateTime()
    {
@@ -167,7 +163,4 @@ namespace MyTools {
    {
       logger.OpenFile(fileName);
    }
-
-   //=============================================================================================
-
 } // namespace MyTools

@@ -1,14 +1,13 @@
 ﻿#include <conio.h>
+#include <crtdbg.h>
 #include <thread>
 #include <chrono>
 
 #include "SBomber.h"
 #include "MyTools.h"
-#include <crtdbg.h>
 
-using namespace std;
+using namespace std::chrono_literals;
 
-//========================================================================================================================
 
 int main(void)
 {

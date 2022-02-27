@@ -8,7 +8,8 @@ LevelGUI::LevelGUI() :
    passedTime{ 0 },
    fps{ 0 },
    bombsNumber{ 0 },
-   score{ 0 } 
+   score{ 0 },
+   message{ "" }
 {
 }
 
@@ -45,6 +46,18 @@ void LevelGUI::Draw() const
    std::cout << "BombsNum: " << bombsNumber;
    MyTools::GotoXY(62, 1);
    std::cout << "Score: " << score;
+
+   if (!message.empty())
+   {
+      MyTools::GotoXY(5, height + 2);
+
+      std::cout << "Message: " << message;
+   }
+}
+
+void LevelGUI::BeNotified(const std::string& mes)
+{
+   message = mes;
 }
 
 void LevelGUI::SetParam(uint64_t passedTimeNew, uint64_t fpsNew, uint16_t bombsNumberNew, int16_t scoreNew)

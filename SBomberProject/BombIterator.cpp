@@ -1,10 +1,10 @@
 #include "BombIterator.h"
 #include <string>
+#include <typeinfo>
 
 BombIterator::BombIterator(const std::vector<std::shared_ptr<DynamicObject>>& vec) :
    dynamicObjects{ vec },
-   index{ -1 },
-   ptr{ nullptr }
+   index{ -1 }
 {
    ++(*this);
 }
@@ -12,10 +12,9 @@ BombIterator::BombIterator(const std::vector<std::shared_ptr<DynamicObject>>& ve
 void BombIterator::reset()
 {
    index = -1;
-   ptr = nullptr;
 }
 
-BombIterator& BombIterator::operator++ () // префиксный инкремент
+BombIterator& BombIterator::operator ++ () // префиксный инкремент
 {
    ++index;
 
@@ -26,11 +25,9 @@ BombIterator& BombIterator::operator++ () // префиксный инкремент
 
    for (; index < dynamicObjects.size(); ++index)
    {
-      BombDecorator* pBomb = dynamic_cast<BombDecorator*>(dynamicObjects[index].get());
-      if (pBomb != nullptr)
+      if(typeid(BombDecorator) == typeid(*dynamicObjects[index].get()))
       {
          DynamicObject* dObj = dynamicObjects[index].get();
-         ptr = &dObj;
          break;
       }
    }
@@ -38,10 +35,16 @@ BombIterator& BombIterator::operator++ () // префиксный инкремент
    if (index == dynamicObjects.size())
    {
       index = -1;
-      ptr = nullptr;
    }
 
    return *this;
+}
+
+BombIterator& BombIterator::operator ++ (int) // постфиксный инкремент
+{
+   auto it = *this;
+   ++(*this);
+   return it;
 }
 
 BombDecorator*& BombIterator::operator * ()
@@ -56,7 +59,7 @@ BombDecorator*& BombIterator::operator * ()
 
 bool BombIterator::operator == (const BombIterator& it) const
 {
-   if (index == it.index && ptr == it.ptr && dynamicObjects == it.dynamicObjects)
+   if (index == it.index && dynamicObjects == it.dynamicObjects)
    {
       return true;
    }

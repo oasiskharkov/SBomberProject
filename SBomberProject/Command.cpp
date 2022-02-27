@@ -49,13 +49,14 @@ void DeleteStaticObjectCommand::Execute()
    }
 }
 
-DropBombCommand::DropBombCommand(std::vector<std::shared_ptr<DynamicObject>>& dObjects, const Plane* plane, uint16_t& bombsNumber, int16_t& score) :
+DropBombCommand::DropBombCommand(std::vector<std::shared_ptr<DynamicObject>>& dObjects, const std::vector<DestroyableGroundObject*>& dgos_, 
+   const Plane* plane, uint16_t& bombsNumber, int16_t& score) :
    dynamicObjects{ dObjects },
+   dgos{ dgos_ },
    plane{ plane },
    bombsNumber{ bombsNumber},
    score{score}
 {
-
 }
 
 void DropBombCommand::Execute()
@@ -80,6 +81,10 @@ void DropBombCommand::Execute()
    bomb->SetWidth(SMALL_CRATER_SIZE);
 
    dynamicObjects.emplace_back(bomb);
+   for (const auto& dgo : dgos)
+   {
+      bomb->AddObserver(dgo);
+   }
+
    bombsNumber--;
-   //score -= Bomb::BombCost;
 }

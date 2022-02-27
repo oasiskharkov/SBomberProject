@@ -12,6 +12,7 @@ public:
    void reset();
 
    BombIterator& operator ++ ();
+   BombIterator& operator ++ (int);
    BombDecorator*& operator * ();
 
    bool operator == (const BombIterator& it) const;
@@ -22,5 +23,4 @@ public:
 private:
    std::vector<std::shared_ptr<DynamicObject>> dynamicObjects;
    int index;
-   DynamicObject** ptr;
 };

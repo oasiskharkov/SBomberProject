@@ -7,3 +7,8 @@ void Bomb::Draw() const
    MyTools::GotoXY(x, y);
    std::cout << "*";
 }
+
+void Bomb::Accept(const Visitor& v)
+{
+   v.log(*this);
+}
