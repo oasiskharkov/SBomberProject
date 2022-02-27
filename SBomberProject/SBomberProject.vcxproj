@@ -178,7 +178,6 @@
     <ClInclude Include="MyTools.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="SBomber.h" />
-    <ClInclude Include="SBomberImpl.h" />
     <ClInclude Include="Tank.h" />
     <ClInclude Include="TankAdaptee.h" />
     <ClInclude Include="TankAdapter.h" />

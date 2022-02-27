@@ -2,13 +2,13 @@
 
 #include <memory>
 
-#include "SBomberImpl.h"
+class SBomberImpl;
 
 class SBomber
 {
 public:
    SBomber();
-   ~SBomber() = default;
+   ~SBomber();
 
    bool GetExitFlag() const; 
 
@@ -20,5 +20,5 @@ public:
    void MoveObjects();
    void CheckObjects();
 private:
-   std::unique_ptr<SBomberImpl> impl;
+   SBomberImpl* impl;
 };

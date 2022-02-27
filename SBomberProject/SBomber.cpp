@@ -2,11 +2,17 @@
 #include <windows.h>
 
 #include "SBomber.h"
+#include "SBomberImpl.cpp"
 
 SBomber::SBomber() :
-   impl{ std::make_unique<SBomberImpl>() }
+   impl{ new SBomberImpl }
 {
    
+}
+
+SBomber::~SBomber()
+{
+   delete impl;
 }
 
 void SBomber::MoveObjects()
