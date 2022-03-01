@@ -11,6 +11,26 @@ Tank::Tank(Mediator* med) :
 
 }
 
+Tank::Tank(const Tank& tank) 
+{
+   SetPos(tank.GetX(), tank.GetY());
+   SetWidth(tank.GetWidth());
+   time = tank.time;
+   mediator = tank.mediator;
+}
+
+Tank& Tank::operator = (const Tank& tank)
+{
+   if (this != &tank)
+   {
+      SetPos(tank.GetX(), tank.GetY());
+      SetWidth(tank.GetWidth());
+      time = tank.time;
+      mediator = tank.mediator;
+   }
+   return *this;
+}
+
 bool Tank::isInside(double x1, double x2) const
 {
    const double XBeg = x + 2;
@@ -56,4 +76,9 @@ void Tank::Update(float dt)
       mediator->SendMessage(messages[choice]);
       time = 0.f;
    }
+}
+
+std::shared_ptr<DestroyableGroundObject> Tank::Clone() const
+{
+   return std::make_shared<Tank>(*this);
 }

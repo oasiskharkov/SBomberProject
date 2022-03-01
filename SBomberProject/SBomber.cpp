@@ -14,6 +14,7 @@
 #include "Plane.h"
 #include "LevelGUI.h"
 #include "Ground.h"
+#include "Tree.h"
 
 using namespace std::placeholders;
 using namespace MyTools;
@@ -39,6 +40,7 @@ public:
    CollisionDetector collisionDetector;
    LogVisitor logVisitor;
    Mediator mediator;
+   Tree tree;
 
    SBomberImpl() :
       exitFlag{ false },
@@ -50,7 +52,8 @@ public:
       fps{ 0 },
       score{ 0 },
       logger{ LoggerSingleton::getInstance(FileLoggerSingleton::getInstance()) },
-      collisionDetector{ std::make_unique<CollisionImplWin>() }
+      collisionDetector{ std::make_unique<CollisionImplWin>() },
+      tree{new SmallState}
    {
       srand(static_cast<unsigned>(time(nullptr)));
 
@@ -92,12 +95,12 @@ public:
 
       std::shared_ptr<TankAdapter> pTankAdapter = std::make_shared<TankAdapter>();
       pTankAdapter->SetWidth(13);
-      pTankAdapter->SetPos(30, groundY - 1);
+      pTankAdapter->SetPos(20, groundY - 1);
       vecStaticObj.emplace_back(pTankAdapter);
 
       std::shared_ptr<Tank> pTank = std::make_shared<Tank>(&mediator);
       pTank->SetWidth(13);
-      pTank->SetPos(50, groundY - 1);
+      pTank->SetPos(45, groundY - 1);
       vecStaticObj.emplace_back(pTank);
 
       std::shared_ptr<Tank> pTank2 = std::make_shared<Tank>(&mediator);
@@ -107,8 +110,10 @@ public:
 
       std::shared_ptr<House> pHouse = std::make_shared<House>();
       pHouse->SetWidth(12);
-      pHouse->SetPos(90, groundY - 1);
+      pHouse->SetPos(95, groundY - 1);
       vecStaticObj.emplace_back(pHouse);
+
+      tree.SetPos(10, groundY - 1);
 
       HouseBuilderA hbA;
       HouseBuilderB hbB;
@@ -280,6 +285,36 @@ public:
       }
    }
 
+   void CloneDestroyableGroundObject()
+   {
+      auto dgos = FindDestroyableGroundObjects();
+
+      auto it = std::remove_if(dgos.begin(), dgos.end(), [](const auto& dgo) { return typeid(TankAdapter) == typeid(*dgo); });
+      dgos.erase(it, dgos.end());
+
+      std::shared_ptr<DestroyableGroundObject> cloneObj = dgos[rand() % dgos.size()]->Clone();
+      for (int i = 0; i < 100; ++i)
+      {
+         int x = rand() % 100 + 5;
+
+         int count = 0;
+         for (const auto& dgo : dgos)
+         {
+            if (!dgo->isInside(x, x + cloneObj->GetWidth()))
+            {
+               ++count;
+            }
+         }
+
+         if (count == dgos.size())
+         {
+            cloneObj->SetPos(x + cloneObj->GetWidth() / 2, GetMaxY() - 6);
+            vecStaticObj.emplace_back(cloneObj);
+            return;
+         }
+      } 
+   }
+
    void CommandExecuter(std::unique_ptr<Command> command)
    {
       if (command)
@@ -360,6 +395,14 @@ void SBomber::ProcessKBHit()
       impl->DropBomb();
       break;
 
+   case 'd':
+      impl->CloneDestroyableGroundObject();
+      break;
+
+   case 'D':
+      impl->CloneDestroyableGroundObject();
+      break;
+
    default:
       break;
    }
@@ -385,6 +428,8 @@ void SBomber::DrawFrame()
       }
    }
 
+   impl->tree.Draw();
+
    GotoXY(0, 0);
    impl->fps++;
 
@@ -402,6 +447,7 @@ void SBomber::TimeFinish()
    impl->finishTime = GetTickCount64();
    impl->deltaTime = uint16_t(impl->finishTime - impl->startTime);
    impl->passedTime += impl->deltaTime;
+   impl->tree.Update(impl->deltaTime / 1000.f);
 
    for (size_t i = 0; i < impl->vecStaticObj.size(); ++i)
    {
