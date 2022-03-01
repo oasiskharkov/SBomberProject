@@ -53,7 +53,7 @@ public:
       score{ 0 },
       logger{ LoggerSingleton::getInstance(FileLoggerSingleton::getInstance()) },
       collisionDetector{ std::make_unique<CollisionImplWin>() },
-      tree{new SmallState}
+      tree{ new SmallState }
    {
       srand(static_cast<unsigned>(time(nullptr)));
 
@@ -312,7 +312,7 @@ public:
             vecStaticObj.emplace_back(cloneObj);
             return;
          }
-      } 
+      }
    }
 
    void CommandExecuter(std::unique_ptr<Command> command)
@@ -327,7 +327,7 @@ public:
 SBomber::SBomber() :
    impl{ std::make_unique<SBomberImpl>() }
 {
-   
+
 }
 
 SBomber::~SBomber()
