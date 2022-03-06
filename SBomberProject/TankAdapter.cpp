@@ -39,3 +39,8 @@ uint16_t TankAdapter::GetWidth() const
 {
    return adaptee.GetWidth();
 }
+
+std::shared_ptr<DestroyableGroundObject> TankAdapter::Clone() const
+{
+   return nullptr;
+}

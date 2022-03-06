@@ -14,6 +14,7 @@ public:
    double GetX() const override;
    void SetWidth(uint16_t width) override;
    uint16_t GetWidth() const override;
+   std::shared_ptr<DestroyableGroundObject> Clone() const override;
 private:
    TankAdaptee adaptee;
 };

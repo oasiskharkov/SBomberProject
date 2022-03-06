@@ -2,6 +2,7 @@
 #include <crtdbg.h>
 #include <thread>
 #include <chrono>
+#include <iostream>
 
 #include "SBomber.h"
 #include "MyTools.h"
@@ -16,25 +17,32 @@ int main(void)
    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 #endif
 
-    SBomber game;
+   try
+   {
+      SBomber game;
 
-    do {
-        game.TimeStart();
+      do {
+         game.TimeStart();
 
-        if (_kbhit())
-        {
+         if (_kbhit())
+         {
             game.ProcessKBHit();
-        }
-        std::this_thread::sleep_for(500ms);
-        MyTools::ClrScr();
+         }
+         std::this_thread::sleep_for(500ms);
+         MyTools::ClrScr();
 
-        game.DrawFrame();
-        game.MoveObjects();
-        game.CheckObjects();
+         game.DrawFrame();
+         game.MoveObjects();
+         game.CheckObjects();
 
-        game.TimeFinish();
+         game.TimeFinish();
 
-    } while (!game.GetExitFlag());
+      } while (!game.GetExitFlag());
+   }
+   catch (const std::exception& ex)
+   {
+      std::cerr << ex.what() << std::endl;
+   }
 
-    return 0;
+   return 0;
 }
