@@ -31,36 +31,7 @@ bool Tree::isInside(double x1, double x2) const
 
 void Tree::Draw() const
 {
-   if (typeid(SmallState) == typeid(*state))
-   {
-      MyTools::SetColor(MyTools::CC_Green);
-      MyTools::GotoXY(x, y);
-      std::cout << " | ";
-      MyTools::GotoXY(x, y - 1);
-      std::cout << "\\|/";
-   }
-   else if (typeid(MidState) == typeid(*state))
-   {
-      MyTools::SetColor(MyTools::CC_Green);
-      MyTools::GotoXY(x - 1, y);
-      std::cout << "  |  ";
-      MyTools::GotoXY(x - 1, y - 1);
-      std::cout << " \\|/ ";
-      MyTools::GotoXY(x - 1, y - 2);
-      std::cout << "\\\\|//";
-   }
-   else if (typeid(BigState) == typeid(*state))
-   {
-      MyTools::SetColor(MyTools::CC_Green);
-      MyTools::GotoXY(x - 2, y);
-      std::cout << "   |   ";
-      MyTools::GotoXY(x - 2, y - 1);
-      std::cout << "  \\|/  ";
-      MyTools::GotoXY(x - 2, y - 2);
-      std::cout << " \\\\|// ";
-      MyTools::GotoXY(x - 2, y - 3);
-      std::cout << "\\\\\\|///";
-   }
+   state->Draw(x, y);
 }
 
 void Tree::Update(float dt)
@@ -95,6 +66,15 @@ void SmallState::Grow(Tree* tree)
    }
 }
 
+void SmallState::Draw(double x, double y) const
+{
+   MyTools::SetColor(MyTools::CC_Green);
+   MyTools::GotoXY(x, y);
+   std::cout << " | ";
+   MyTools::GotoXY(x, y - 1);
+   std::cout << "\\|/";
+}
+
 void MidState::Grow(Tree* tree)
 {
    if (tree)
@@ -103,7 +83,31 @@ void MidState::Grow(Tree* tree)
    }
 }
 
+void MidState::Draw(double x, double y) const
+{
+   MyTools::SetColor(MyTools::CC_Green);
+   MyTools::GotoXY(x - 1, y);
+   std::cout << "  |  ";
+   MyTools::GotoXY(x - 1, y - 1);
+   std::cout << " \\|/ ";
+   MyTools::GotoXY(x - 1, y - 2);
+   std::cout << "\\\\|//";
+}
+
 void BigState::Grow(Tree* tree)
 {
    // dummy
+}
+
+void BigState::Draw(double x, double y) const
+{
+   MyTools::SetColor(MyTools::CC_Green);
+   MyTools::GotoXY(x - 2, y);
+   std::cout << "   |   ";
+   MyTools::GotoXY(x - 2, y - 1);
+   std::cout << "  \\|/  ";
+   MyTools::GotoXY(x - 2, y - 2);
+   std::cout << " \\\\|// ";
+   MyTools::GotoXY(x - 2, y - 3);
+   std::cout << "\\\\\\|///";
 }

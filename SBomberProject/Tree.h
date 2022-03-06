@@ -13,6 +13,7 @@ class TreeState
 {
 public:
    virtual void Grow(Tree* tree) = 0;
+   virtual void Draw(double x, double y) const = 0;
 };
 
 class Tree : public DestroyableGroundObject
@@ -26,6 +27,7 @@ public:
    void Update(float dt);
    void SetState(TreeState* s);
    std::shared_ptr<DestroyableGroundObject> Clone() const override;
+   static int* i;
 private:
    const uint16_t score = 10;
    float time;
@@ -35,17 +37,20 @@ private:
 class SmallState : public TreeState
 {
 public:
-   virtual void Grow(Tree* tree) override;
+   void Grow(Tree* tree) override;
+   void Draw(double x, double y) const override;
 };
 
 class MidState : public TreeState
 {
 public:
-   virtual void Grow(Tree* tree) override;
+   void Grow(Tree* tree) override;
+   void Draw(double x, double y) const override;
 };
 
 class BigState : public TreeState
 {
 public:
-   virtual void Grow(Tree* tree) override;
+   void Grow(Tree* tree) override;
+   void Draw(double x, double y) const override;
 };
